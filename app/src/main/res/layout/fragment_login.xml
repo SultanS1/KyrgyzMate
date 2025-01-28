@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:gravity="center_vertical"
+    android:padding="30dp">
+
+    <TextView
+        style="@style/TextTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Welcome!"
+        android:textAlignment="center"
+        android:textColor="@color/action_color"/>
+
+    <TextView
+        style="@style/TextCaption"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="E-mail*"
+        android:textAlignment="viewStart"
+        android:textColor="@color/field_description_color"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp"
+        app:hintEnabled="false"
+        android:layout_marginTop="@dimen/dp_1x"
+        android:background="@drawable/rounded_input_field_bg">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/emailEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            style="@style/CustomTextInputEditText"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        style="@style/TextCaption"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_2x"
+        android:text="Password*"
+        android:textAlignment="viewStart"
+        android:textColor="@color/field_description_color"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp"
+        app:hintEnabled="false"
+        app:endIconMode="password_toggle"
+        android:layout_marginTop="@dimen/dp_1x"
+        android:background="@drawable/rounded_input_field_bg">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/passwordEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:hint="Password"
+            android:inputType="numberPassword"
+            style="@style/CustomTextInputEditText"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/forgotPasswordButton"
+        style="@style/TextSmall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_3x"
+        android:text="Forgot password?"
+        android:textAlignment="viewEnd"
+        android:textColor="@color/purple_700"/>
+
+    <Button
+        android:id="@+id/loginButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_8dp_bg"
+        android:backgroundTint="@color/action_color"
+        android:text="Login"
+        android:textSize="14sp"
+        android:padding="@dimen/dp_2x"
+        android:textColor="@color/white"
+        android:layout_marginTop="@dimen/dp_3x"/>
+
+    <TextView
+        android:id="@+id/signUpButton"
+        style="@style/TextCaption"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_3x"
+        android:padding="@dimen/dp_1x"
+        android:text="Sign Up"
+        android:textAlignment="center"
+        android:textColor="@color/purple_700"/>
+
+</LinearLayout>

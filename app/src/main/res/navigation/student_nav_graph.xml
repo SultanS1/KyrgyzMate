@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/student_nav_graph"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="alatoo.edu.kg.kyrgyzmate.ui.screens.student.home.profile.ProfileFragment"
+        android:label="ProfileFragment" />
+
+    <fragment
+        android:id="@+id/translatorFragment"
+        android:name="alatoo.edu.kg.kyrgyzmate.ui.screens.student.home.translator.TranslatorFragment"
+        android:label="TranslatorFragment" />
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="alatoo.edu.kg.kyrgyzmate.ui.screens.student.home.main.MainFragment"
+        android:label="MainFragment" />
+
+</navigation>

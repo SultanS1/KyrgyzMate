@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">KyrgyzMate</string>
     <string name="kyrgyzmate">KyrgyzMate</string>
+    <string name="courses">Courses</string>
+    <string name="translator">Translator</string>
+    <string name="profile">Profile</string>
 </resources>

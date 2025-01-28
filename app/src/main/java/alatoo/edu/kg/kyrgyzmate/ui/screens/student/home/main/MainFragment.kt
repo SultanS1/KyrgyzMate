@@ -1,4 +1,4 @@
-package alatoo.edu.kg.kyrgyzmate.ui.screens.student.home.main.components
+package alatoo.edu.kg.kyrgyzmate.ui.screens.student.home.main
 
 import androidx.fragment.app.Fragment
 
