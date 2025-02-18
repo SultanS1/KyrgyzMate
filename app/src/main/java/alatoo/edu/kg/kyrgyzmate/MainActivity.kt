@@ -1,15 +1,11 @@
 package alatoo.edu.kg.kyrgyzmate
 
-import alatoo.edu.kg.kyrgyzmate.ui.screens.student.home.main.components.MainScreenContent
 import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
+import androidx.appcompat.app.AppCompatActivity
 
-class MainActivity : ComponentActivity() {
+class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent {
-            MainScreenContent()
-        }
+        setContentView(R.layout.activity_main)
     }
 }
