@@ -82,36 +82,44 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <TextView
-        style="@style/TextCaption"
+    <LinearLayout
+        android:id="@+id/groupSelectContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dp_2x"
-        android:text="Select your group*"
-        android:textAlignment="viewStart"
-        android:textColor="@color/field_description_color"/>
+        android:orientation="vertical">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:boxStrokeWidth="0dp"
-        app:boxStrokeWidthFocused="0dp"
-        app:hintEnabled="false"
-        android:layout_marginTop="@dimen/dp_1x"
-        android:background="@drawable/rounded_input_field_bg">
-
-        <AutoCompleteTextView
-            android:id="@+id/groupEditText"
+        <TextView
+            style="@style/TextCaption"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:singleLine="true"
-            android:hint="Select..."
-            android:inputType="text"
-            android:enabled="false"
-            android:drawableEnd="@drawable/ic_drop_down"
-            style="@style/CustomTextInputEditText"/>
+            android:text="Select your group*"
+            android:textAlignment="viewStart"
+            android:textColor="@color/field_description_color"/>
 
-    </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:hintEnabled="false"
+            android:layout_marginTop="@dimen/dp_1x"
+            android:background="@drawable/rounded_input_field_bg">
+
+            <AutoCompleteTextView
+                android:id="@+id/groupEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:hint="Select..."
+                android:inputType="text"
+                android:enabled="false"
+                android:drawableEnd="@drawable/ic_drop_down"
+                style="@style/CustomTextInputEditText"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
 
     <TextView
         style="@style/TextCaption"

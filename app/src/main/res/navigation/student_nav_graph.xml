@@ -6,17 +6,17 @@
 
     <fragment
         android:id="@+id/profileFragment"
-        android:name="alatoo.edu.kg.kyrgyzmate.ui.screens.student.home.profile.ProfileFragment"
+        android:name="alatoo.edu.kg.kyrgyzmate.ui.screens.student_feature.home.profile.ProfileFragment"
         android:label="ProfileFragment" />
 
     <fragment
         android:id="@+id/translatorFragment"
-        android:name="alatoo.edu.kg.kyrgyzmate.ui.screens.student.home.translator.TranslatorFragment"
+        android:name="alatoo.edu.kg.kyrgyzmate.ui.screens.student_feature.home.translator.TranslatorFragment"
         android:label="TranslatorFragment" />
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="alatoo.edu.kg.kyrgyzmate.ui.screens.student.home.main.MainFragment"
+        android:name="alatoo.edu.kg.kyrgyzmate.ui.screens.student_feature.home.main.MainStudentFragment"
         android:label="MainFragment" />
 
 </navigation>

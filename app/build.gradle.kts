@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id("androidx.navigation.safeargs.kotlin")
 }
 
 android {
@@ -84,4 +85,8 @@ dependencies {
 
     //viewBindingPropertyDelegate
     implementation(libs.viewbindingpropertydelegate.noreflection)
+
+    //koin
+    implementation (libs.koin.core)
+    implementation (libs.koin.android)
 }

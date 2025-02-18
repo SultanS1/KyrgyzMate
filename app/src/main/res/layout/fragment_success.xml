@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:gravity="center"
+    android:padding="30dp">
+
+    <TextView
+        style="@style/TextBody"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="Success   🎉"
+        android:paddingHorizontal="48dp"
+        android:paddingVertical="28dp"
+        android:textAlignment="center"
+        android:background="@drawable/rounded_16dp_bg"
+        android:backgroundTint="@color/input_field_color"
+        android:textColor="@color/field_description_color"/>
+
+    <Button
+        android:id="@+id/okButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_8dp_bg"
+        android:backgroundTint="@color/action_color"
+        android:text="Ok"
+        android:textAllCaps="false"
+        android:textSize="14sp"
+        android:padding="@dimen/dp_2x"
+        android:textColor="@color/white"
+        android:layout_marginTop="@dimen/dp_3x"/>
+
+</LinearLayout>

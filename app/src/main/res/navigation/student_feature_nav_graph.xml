@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="alatoo.edu.kg.kyrgyzmate.ui.screens.student.home.HomeFragment"
+        android:name="alatoo.edu.kg.kyrgyzmate.ui.screens.student_feature.home.HomeFragment"
         android:label="HomeFragment" >
         <action
             android:id="@+id/action_homeFragment_to_themesFragment"
@@ -14,7 +14,7 @@
     </fragment>
     <fragment
         android:id="@+id/themesFragment"
-        android:name="alatoo.edu.kg.kyrgyzmate.ui.screens.student.themes.ThemesFragment"
+        android:name="alatoo.edu.kg.kyrgyzmate.ui.screens.student_feature.themes.ThemesFragment"
         android:label="ThemesFragment" >
         <action
             android:id="@+id/action_themesFragment_to_dialogFragment"
@@ -31,19 +31,19 @@
     </fragment>
     <fragment
         android:id="@+id/dialogFragment"
-        android:name="alatoo.edu.kg.kyrgyzmate.ui.screens.student.dialog.DialogFragment"
+        android:name="alatoo.edu.kg.kyrgyzmate.ui.screens.student_feature.dialog.DialogFragment"
         android:label="DialogFragment" />
     <fragment
         android:id="@+id/grammarFragment"
-        android:name="alatoo.edu.kg.kyrgyzmate.ui.screens.student.grammar.GrammarFragment"
+        android:name="alatoo.edu.kg.kyrgyzmate.ui.screens.student_feature.grammar.GrammarFragment"
         android:label="GrammarFragment" />
     <fragment
         android:id="@+id/textsFragment"
-        android:name="alatoo.edu.kg.kyrgyzmate.ui.screens.student.texts.TextsFragment"
+        android:name="alatoo.edu.kg.kyrgyzmate.ui.screens.student_feature.texts.TextsFragment"
         android:label="TextsFragment" />
     <fragment
         android:id="@+id/wordsFragment"
-        android:name="alatoo.edu.kg.kyrgyzmate.ui.screens.student.words.WordsFragment"
+        android:name="alatoo.edu.kg.kyrgyzmate.ui.screens.student_feature.words.WordsFragment"
         android:label="WordsFragment" />
 
 </navigation>
