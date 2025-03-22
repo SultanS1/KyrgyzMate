@@ -27,6 +27,7 @@
             android:layout_weight="1"/>
 
         <ImageView
+            android:id="@+id/iconView"
             android:layout_width="31dp"
             android:layout_height="31dp"
             android:src="@drawable/ic_kg_flag"/>

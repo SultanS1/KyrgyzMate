@@ -26,13 +26,14 @@
         android:textColor="@color/field_description_color"/>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/emailContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
         app:hintEnabled="false"
-        android:layout_marginTop="@dimen/dp_1x"
-        android:background="@drawable/rounded_input_field_bg">
+        app:boxBackgroundMode="outline"
+        android:layout_marginTop="@dimen/dp_1x">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/emailEditText"
@@ -55,14 +56,15 @@
         android:textColor="@color/field_description_color"/>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/passwordContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
         app:hintEnabled="false"
         app:endIconMode="password_toggle"
-        android:layout_marginTop="@dimen/dp_1x"
-        android:background="@drawable/rounded_input_field_bg">
+        app:boxBackgroundMode="outline"
+        android:layout_marginTop="@dimen/dp_1x">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/passwordEditText"

@@ -7,57 +7,62 @@ import alatoo.edu.kg.kyrgyzmate.extensions.navigateAndClearBackStack
 import alatoo.edu.kg.kyrgyzmate.extensions.navigateTo
 import alatoo.edu.kg.kyrgyzmate.extensions.pressCompressInAnimation
 import alatoo.edu.kg.kyrgyzmate.extensions.setClickListener
-import android.content.res.ColorStateList
-import androidx.compose.ui.graphics.Color
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
+import alatoo.edu.kg.kyrgyzmate.extensions.showTwoActionDialog
+import android.content.Intent
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
-import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login) {
+class LoginFragment : BaseFragment<FragmentLoginBinding, LoginPageState, LoginPageActions>(R.layout.fragment_login) {
 
     override val binding: FragmentLoginBinding by viewBinding(FragmentLoginBinding::bind)
 
-    private val viewModel by viewModel<LoginViewModel>()
+    override val viewModel by viewModel<LoginViewModel>()
 
     override fun setupUI() {
-        super.setupUI()
         with(binding) {
             loginButton.pressCompressInAnimation()
             loginButton.setClickListener {
-                viewModel.loginAction(emailEditText.text.toString(), passwordEditText.text.toString())
+                viewModel.submitAction(
+                    LoginPageActions.SubmitData(
+                        emailEditText.text.toString(), passwordEditText.text.toString()
+                    )
+                )
             }
             signUpButton.setClickListener {
-                findNavController().navigateTo(R.id.action_loginFragment_to_roleSelectorFragment)
+                viewModel.submitAction(LoginPageActions.Register)
+            }
+            forgotPasswordButton.setClickListener {
+                viewModel.submitAction(LoginPageActions.ForgotPassword)
             }
         }
     }
 
-    override fun setupObservers() {
-        super.setupObservers()
-        viewLifecycleOwner.lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                launch {
-                    viewModel.fieldsState.collect() {
-                        fieldsState(it)
-                    }
-                }
-            }
-        }
-    }
-
-    private fun fieldsState(state: LoginPageState) {
+    override fun renderState(state: LoginPageState) {
         with(binding) {
-            when(state) {
+            when (state) {
                 is LoginPageState.LoginFieldsState -> {
-                    emailEditText.error = state.emailEmpty
-                    passwordEditText.error = state.passwordEmpty
+                    emailContainer.error = state.emailEmpty
+                    emailContainer.isErrorEnabled = state.emailEmpty != null
+
+                    passwordContainer.error = state.passwordEmpty
+                    passwordContainer.isErrorEnabled = state.passwordEmpty != null
                 }
-                is LoginPageState.RoleStudent -> findNavController().navigateAndClearBackStack(R.id.action_loginFragment_to_studentFragment)
-                is LoginPageState.RoleLecturer -> findNavController().navigateAndClearBackStack(R.id.action_loginFragment_to_lecturerFragment)
+
+                is LoginPageState.RoleStudent -> findNavController().navigateAndClearBackStack(R.id.studentFragment)
+
+                is LoginPageState.RoleLecturer -> findNavController().navigateAndClearBackStack(R.id.lecturerFragment)
+
+                is LoginPageState.ForgotPassword -> requireContext().showTwoActionDialog(
+                    title = getString(R.string.title_deeplink_to_pass_generation),
+                    positiveActionText = getString(R.string.action_open_gmail),
+                    negativeActionText = getString(R.string.action_resend),
+                    positiveAction = {},
+                    negativeAction = {}
+                )
+
+                is LoginPageState.Register -> findNavController().navigateTo(R.id.action_loginFragment_to_roleSelectorFragment)
             }
         }
     }
