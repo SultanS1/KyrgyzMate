@@ -34,13 +34,14 @@
         android:textColor="@color/field_description_color"/>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/firstNameContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
         app:hintEnabled="false"
-        android:layout_marginTop="@dimen/dp_1x"
-        android:background="@drawable/rounded_input_field_bg">
+        app:boxBackgroundMode="outline"
+        android:layout_marginTop="@dimen/dp_1x">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/firstNameEditText"
@@ -63,13 +64,14 @@
         android:textColor="@color/field_description_color"/>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/lastNameContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
         app:hintEnabled="false"
-        android:layout_marginTop="@dimen/dp_1x"
-        android:background="@drawable/rounded_input_field_bg">
+        app:boxBackgroundMode="outline"
+        android:layout_marginTop="@dimen/dp_1x">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/lastNameEditText"
@@ -98,13 +100,14 @@
             android:textColor="@color/field_description_color"/>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/groupContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:boxStrokeWidth="0dp"
             app:boxStrokeWidthFocused="0dp"
             app:hintEnabled="false"
-            android:layout_marginTop="@dimen/dp_1x"
-            android:background="@drawable/rounded_input_field_bg">
+            app:boxBackgroundMode="outline"
+            android:layout_marginTop="@dimen/dp_1x">
 
             <AutoCompleteTextView
                 android:id="@+id/groupEditText"
@@ -131,13 +134,14 @@
         android:textColor="@color/field_description_color"/>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/emailContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
         app:hintEnabled="false"
-        android:layout_marginTop="@dimen/dp_1x"
-        android:background="@drawable/rounded_input_field_bg">
+        app:boxBackgroundMode="outline"
+        android:layout_marginTop="@dimen/dp_1x">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/emailEditText"

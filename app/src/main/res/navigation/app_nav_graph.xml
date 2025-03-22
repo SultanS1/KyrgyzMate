@@ -38,12 +38,6 @@
             android:id="@+id/action_loginFragment_to_resetPassFragment"
             app:destination="@id/resetPassFragment" />
         <action
-            android:id="@+id/action_loginFragment_to_lecturerFragment"
-            app:destination="@id/lecturerFragment" />
-        <action
-            android:id="@+id/action_loginFragment_to_studentFragment"
-            app:destination="@id/studentFragment" />
-        <action
             android:id="@+id/action_loginFragment_to_roleSelectorFragment"
             app:destination="@id/roleSelectorFragment" />
     </fragment>

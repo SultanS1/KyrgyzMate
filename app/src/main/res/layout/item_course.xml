@@ -17,6 +17,7 @@
         style="@style/TextSubtitle"
         android:textColor="@color/white"
         tools:text="Beginner"
+        android:text="Beginner"
         android:textStyle="bold"
         android:layout_marginHorizontal="@dimen/dp_1x"/>
 
@@ -29,6 +30,7 @@
         android:maxLines="5"
         android:ellipsize="end"
         tools:text="Beginner"
+        android:text="Beginner"
         android:layout_marginTop="@dimen/dp_1x"/>
 
     <LinearLayout
@@ -43,6 +45,7 @@
             android:layout_height="wrap_content"
             style="@style/TextSmall"
             tools:text="5 lessons"
+            android:text="5 lessons"
             android:background="@drawable/rounded_16dp_bg"
             android:backgroundTint="@color/purple"
             android:paddingHorizontal="@dimen/dp_2x"
@@ -65,7 +68,8 @@
             android:textColor="@color/white"
             android:textStyle="bold"
             android:layout_marginHorizontal="4dp"
-            tools:text="50%"/>
+            tools:text="50%"
+            android:text="50%"/>
 
         <ProgressBar
             android:id="@+id/progressBar1"

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "397958372626",
+    "project_id": "kyrgyz-mate",
+    "storage_bucket": "kyrgyz-mate.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:397958372626:android:161f573b556815e4d767cb",
+        "android_client_info": {
+          "package_name": "alatoo.edu.kg.kyrgyzmate"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2uLA7hv82utMzIW1rYGS0sO-Pkbw3zu4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
