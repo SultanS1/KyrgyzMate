@@ -2,17 +2,10 @@ package alatoo.edu.kg.kyrgyzmate.ui.screens.auth.splash
 
 import alatoo.edu.kg.kyrgyzmate.R
 import alatoo.edu.kg.kyrgyzmate.core.BaseFragment
-import alatoo.edu.kg.kyrgyzmate.core.BaseViewModel
 import alatoo.edu.kg.kyrgyzmate.databinding.FragmentAuthSplashBinding
 import alatoo.edu.kg.kyrgyzmate.extensions.navigateAndClearBackStack
-import android.os.Bundle
-import android.view.View
-import android.widget.Toast
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
-import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SplashFragment :
@@ -31,17 +24,20 @@ class SplashFragment :
     }
 
     override fun renderState(state: SplashStates) {
-        when(state){
-            SplashStates.Loading -> {}
+        when (state) {
             SplashStates.UserIsLecturer -> {
                 findNavController().navigateAndClearBackStack(R.id.lecturerFragment)
             }
+
             SplashStates.UserIsStudent -> {
                 findNavController().navigateAndClearBackStack(R.id.studentFragment)
             }
+
             SplashStates.UserNotAuthorized -> {
-                findNavController().navigateAndClearBackStack(R.id.action_splashFragment_to_loginFragment)
+                findNavController().navigateAndClearBackStack(R.id.loginFragment)
             }
+
+            SplashStates.Loading -> {}
         }
     }
 }

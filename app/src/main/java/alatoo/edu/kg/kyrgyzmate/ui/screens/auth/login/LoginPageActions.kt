@@ -8,7 +8,7 @@ sealed interface LoginPageActions : BaseAction {
         val password: String
     ): LoginPageActions
 
-    data object ForgotPassword: LoginPageActions
+    data class ForgotPassword(val email: String): LoginPageActions
 
     data object Register: LoginPageActions
 }

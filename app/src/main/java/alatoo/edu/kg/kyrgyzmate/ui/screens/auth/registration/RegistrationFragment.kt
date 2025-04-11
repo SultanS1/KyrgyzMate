@@ -2,10 +2,14 @@ package alatoo.edu.kg.kyrgyzmate.ui.screens.auth.registration
 
 import alatoo.edu.kg.kyrgyzmate.R
 import alatoo.edu.kg.kyrgyzmate.core.BaseFragment
+import alatoo.edu.kg.kyrgyzmate.data.dto.user.UserRole
 import alatoo.edu.kg.kyrgyzmate.databinding.FragmentRegistrationBinding
-import alatoo.edu.kg.kyrgyzmate.domain.model.role.UserRole
 import alatoo.edu.kg.kyrgyzmate.extensions.navigateTo
+import alatoo.edu.kg.kyrgyzmate.extensions.pressCompressInAnimation
 import alatoo.edu.kg.kyrgyzmate.extensions.setClickListener
+import alatoo.edu.kg.kyrgyzmate.extensions.showLoadingDialog
+import alatoo.edu.kg.kyrgyzmate.extensions.showOneActionDialog
+import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -17,6 +21,7 @@ class RegistrationFragment :
 
     override val binding: FragmentRegistrationBinding by viewBinding(FragmentRegistrationBinding::bind)
     override val viewModel by viewModel<RegistrationViewModel>()
+    private var firstLaunch = true
 
     override fun setupUI() {
         val args: RegistrationFragmentArgs by navArgs()
@@ -24,6 +29,7 @@ class RegistrationFragment :
 
         with(binding) {
             groupSelectContainer.isVisible = userRole == UserRole.STUDENT
+            signUpButton.pressCompressInAnimation()
             signUpButton.setClickListener {
                 viewModel.submitAction(
                     RegistrationPageAction.SubmitUserData(
@@ -46,11 +52,6 @@ class RegistrationFragment :
             when(state) {
                 RegistrationPageStates.Popup -> findNavController().popBackStack()
 
-                RegistrationPageStates.Register -> {
-                    // TODO: OPEN DIALOG WHICH WILL SUGGEST TO OPEN GMAIL TO GET DEEPLINK(Will be replaced later
-                    findNavController().navigateTo(R.id.action_registrationFragment_to_createPasswordFragment)
-                }
-
                 is RegistrationPageStates.RegistrationFieldsState -> {
                     firstNameContainer.error = state.firstNameState
                     firstNameContainer.isErrorEnabled = state.firstNameState != null
@@ -64,7 +65,46 @@ class RegistrationFragment :
                     emailContainer.error = state.emailState
                     emailContainer.isErrorEnabled = state.emailState != null
                 }
+
+                is RegistrationPageStates.Error -> showErrorDialog(state.messageRes)
+
+                RegistrationPageStates.Loading -> { requireContext().showLoadingDialog(viewLifecycleOwner.lifecycle) }
+
+                RegistrationPageStates.ShowSuccess -> showLinkSentDialog()
+
+                RegistrationPageStates.EmailVerified -> findNavController().navigateTo(R.id.action_registrationFragment_to_createPasswordFragment)
             }
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (!firstLaunch) {
+            viewModel.submitAction(RegistrationPageAction.UserComeBack)
+        }
+    }
+
+    private fun showLinkSentDialog() {
+        requireContext().showOneActionDialog(
+            title = getString(R.string.title_deeplink_to_pass_registration),
+            actionText = getString(R.string.action_open_gmail)
+        ) {
+            val intent = requireContext().packageManager.getLaunchIntentForPackage("com.google.android.gm")
+            firstLaunch = false
+            if (intent != null) {
+                startActivity(intent)
+            } else {
+                Toast.makeText(requireContext(), "Gmail app not found", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun showErrorDialog(messageRes: Int) {
+        requireContext().showOneActionDialog(
+            getString(messageRes),
+            getString(R.string.action_ok))
+        {
+            it.dismiss()
         }
     }
 }

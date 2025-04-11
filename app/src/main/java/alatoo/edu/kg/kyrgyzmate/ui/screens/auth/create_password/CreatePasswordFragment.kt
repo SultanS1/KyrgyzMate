@@ -4,7 +4,10 @@ import alatoo.edu.kg.kyrgyzmate.R
 import alatoo.edu.kg.kyrgyzmate.core.BaseFragment
 import alatoo.edu.kg.kyrgyzmate.databinding.FragmentCreatePasswordBinding
 import alatoo.edu.kg.kyrgyzmate.extensions.navigateTo
+import alatoo.edu.kg.kyrgyzmate.extensions.pressCompressInAnimation
 import alatoo.edu.kg.kyrgyzmate.extensions.setClickListener
+import alatoo.edu.kg.kyrgyzmate.extensions.showLoadingDialog
+import alatoo.edu.kg.kyrgyzmate.extensions.showOneActionDialog
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -17,6 +20,7 @@ class CreatePasswordFragment :
 
     override fun setupUI() {
         with(binding) {
+            createPasswordButton.pressCompressInAnimation()
             createPasswordButton.setClickListener {
                 viewModel.submitAction(CreatePasswordActions.CreatePassword(
                     password = passwordEditText.text.toString(),
@@ -29,7 +33,7 @@ class CreatePasswordFragment :
     override fun renderState(state: CreatePasswordStates) {
         with(binding) {
             when(state) {
-                is CreatePasswordStates.CreatePassword -> {
+                is CreatePasswordStates.PasswordCreateSuccess -> {
                     findNavController().navigateTo(R.id.action_createPasswordFragment_to_successFragment)
                 }
 
@@ -40,6 +44,16 @@ class CreatePasswordFragment :
                     confirmPasswordContainer.error = state.confirmPasswordField
                     confirmPasswordContainer.isErrorEnabled = state.confirmPasswordField != null
                 }
+                CreatePasswordStates.PasswordCreateFailed -> {
+                    requireContext().showOneActionDialog(
+                        getString(R.string.error_unknown_error),
+                        getString(R.string.action_ok)
+                    ) {
+                        it.dismiss()
+                    }
+                }
+
+                CreatePasswordStates.Loading -> { requireContext().showLoadingDialog(viewLifecycleOwner.lifecycle)}
             }
         }
     }

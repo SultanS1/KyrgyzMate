@@ -1,8 +1,14 @@
 package alatoo.edu.kg.kyrgyzmate.extensions
 
+import alatoo.edu.kg.kyrgyzmate.R
+import android.animation.ArgbEvaluator
+import android.animation.ValueAnimator
 import android.annotation.SuppressLint
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.view.MotionEvent
 import android.view.View
+import androidx.core.content.ContextCompat
 
 @SuppressLint("ClickableViewAccessibility")
 fun View.pressHorizontalStretchAnimation() {
@@ -75,3 +81,4 @@ fun View.pressCompressInAnimation() {
         }
     }
 }
+

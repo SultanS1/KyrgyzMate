@@ -36,7 +36,7 @@ fun NavController.navigateAndClearBackStack(destinationId: Int, args: Bundle? = 
         destinationId,
         args,
         NavOptions.Builder()
-            .setPopUpTo(graph.startDestinationId, inclusive = true)
+            .setPopUpTo(graph.id, inclusive = true)
             .setEnterAnim(R.anim.enter_animation)
             .setExitAnim(R.anim.exit_animation)
             .setPopEnterAnim(R.anim.pop_enter_animation)

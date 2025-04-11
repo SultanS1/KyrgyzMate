@@ -7,13 +7,7 @@
     <fragment
         android:id="@+id/splashFragment"
         android:name="alatoo.edu.kg.kyrgyzmate.ui.screens.auth.splash.SplashFragment"
-        android:label="SplashFragment" >
-        <action
-            android:id="@+id/action_splashFragment_to_loginFragment"
-            app:destination="@id/loginFragment"
-            app:popUpToInclusive="true"
-            app:popUpTo="@id/splashFragment" />
-    </fragment>
+        android:label="SplashFragment"/>
     <fragment
         android:id="@+id/registrationFragment"
         android:name="alatoo.edu.kg.kyrgyzmate.ui.screens.auth.registration.RegistrationFragment"
@@ -23,7 +17,7 @@
             app:destination="@id/createPasswordFragment" />
         <argument
             android:name="role"
-            app:argType="alatoo.edu.kg.kyrgyzmate.domain.model.role.UserRole"
+            app:argType="alatoo.edu.kg.kyrgyzmate.data.dto.user.UserRole"
             android:defaultValue="STUDENT" />
     </fragment>
     <fragment
@@ -34,12 +28,6 @@
         android:id="@+id/loginFragment"
         android:name="alatoo.edu.kg.kyrgyzmate.ui.screens.auth.login.LoginFragment"
         android:label="LoginFragment" >
-        <action
-            android:id="@+id/action_loginFragment_to_resetPassFragment"
-            app:destination="@id/resetPassFragment" />
-        <action
-            android:id="@+id/action_loginFragment_to_roleSelectorFragment"
-            app:destination="@id/roleSelectorFragment" />
     </fragment>
     <fragment
         android:id="@+id/lecturerFragment"

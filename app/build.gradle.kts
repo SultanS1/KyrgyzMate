@@ -5,6 +5,14 @@ plugins {
     alias(libs.plugins.google.gms.google.services)
 }
 
+fun com.android.build.api.dsl.DefaultConfig.addBuildConfigFields(fields: Any?) {
+    fields ?: return
+    val buildConfigFields = fields as Map<String, String>
+    buildConfigFields.forEach { (key, value) ->
+        buildConfigField("String", key, "\"$value\"")
+    }
+}
+
 android {
     namespace = "alatoo.edu.kg.kyrgyzmate"
     compileSdk = 35
@@ -20,6 +28,10 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+        buildConfigField("String", "API_KEY", "\"${project.property("API_KEY")}\"")
+        buildConfigField("String", "USERS_TABLE_REFERENCE","\"${project.property("USERS_TABLE_REFERENCE")}\"")
+        buildConfigField("String", "GROUPS_TABLE_REFERENCE","\"${project.property("GROUPS_TABLE_REFERENCE")}\"")
+        buildConfigField("String", "VIDEO_MATERIALS","\"${project.property("VIDEO_MATERIALS")}\"")
     }
 
     buildTypes {
@@ -39,7 +51,7 @@ android {
         jvmTarget = "1.8"
     }
     buildFeatures {
-        compose = true
+        buildConfig = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.1"
@@ -67,8 +79,6 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.fragment.ktx)
-    implementation(libs.firebase.database)
-    implementation(libs.firebase.auth)
     implementation(libs.androidx.credentials)
     implementation(libs.androidx.credentials.play.services.auth)
     implementation(libs.googleid)
@@ -79,7 +89,6 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
-
     implementation(libs.material)
     implementation(libs.androidx.constraintlayout)
     androidTestImplementation(libs.androidx.espresso.core.v351)
@@ -95,4 +104,8 @@ dependencies {
     //koin
     implementation (libs.koin.core)
     implementation (libs.koin.android)
+
+    //Firebase
+    implementation(libs.firebase.auth.ktx)
+    implementation(libs.firebase.database.ktx)
 }

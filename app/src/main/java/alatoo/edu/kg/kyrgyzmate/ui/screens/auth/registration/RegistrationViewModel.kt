@@ -1,11 +1,16 @@
 package alatoo.edu.kg.kyrgyzmate.ui.screens.auth.registration
 
+import alatoo.edu.kg.kyrgyzmate.R
 import alatoo.edu.kg.kyrgyzmate.core.BaseViewModel
-import alatoo.edu.kg.kyrgyzmate.domain.model.role.UserRole
+import alatoo.edu.kg.kyrgyzmate.data.dto.status.FireBasePostResponse
+import alatoo.edu.kg.kyrgyzmate.data.dto.user.UserRegistrationData
+import alatoo.edu.kg.kyrgyzmate.data.dto.user.UserRole
+import alatoo.edu.kg.kyrgyzmate.domain.user.UserInteractor
 import alatoo.edu.kg.kyrgyzmate.utils.ViewModelValidator
+import android.util.Log
 
 class RegistrationViewModel(
-
+    private val userInteractor: UserInteractor
 ) : BaseViewModel<RegistrationPageStates, RegistrationPageAction>(initialState = RegistrationPageStates.RegistrationFieldsState()) {
 
     override fun submitAction(action: RegistrationPageAction) {
@@ -21,53 +26,114 @@ class RegistrationViewModel(
                     UserRole.LECTURER -> registerLecturer(
                         action.firstName, action.lastName, action.role, action.email
                     )
+
+                    UserRole.UNKOWN -> {}
                 }
             }
+
+            RegistrationPageAction.UserComeBack -> checkEmailValidation()
         }
     }
 
     private fun registerStudent(
-        firstNameField: String,
-        lastNameField: String,
+        firstName: String,
+        lastName: String,
         group: String,
         role: UserRole,
-        emailField: String
+        email: String
     ) {
-        val firstName = ViewModelValidator.validateNameField(firstNameField)
-        val lastName = ViewModelValidator.validateNameField(lastNameField)
-        val group = ViewModelValidator.validateSelectorField(group)
-        val email = ViewModelValidator.validateEmailField(emailField)
+        val firstNameStatus = ViewModelValidator.validateNameField(firstName)
+        val lastNameStatus = ViewModelValidator.validateNameField(lastName)
+        val emailStatus = ViewModelValidator.validateEmailField(email)
 
-        if (firstName != null || lastName != null || email != null) {
+        if (firstNameStatus != null || lastNameStatus != null || emailStatus != null) {
             _state.value = RegistrationPageStates.RegistrationFieldsState(
-                firstNameState = firstName,
-                lastNameState = lastName,
-                groupState = group,
-                emailState = email
+                firstNameState = firstNameStatus,
+                lastNameState = lastNameStatus,
+                emailState = emailStatus
             )
         } else {
-            //TODO Should send data to back
-            _state.value = RegistrationPageStates.Register
+            userInteractor.setRegistrationData(
+                UserRegistrationData(
+                    firstName = firstName,
+                    lastName = lastName,
+                    group = group,
+                    role = role,
+                    email = email
+                )
+            )
+            registerUser(email)
+            _state.value = RegistrationPageStates.Loading
         }
     }
 
     private fun registerLecturer(
-        firstNameField: String,
-        lastNameField: String,
+        firstName: String,
+        lastName: String,
         role: UserRole,
-        emailField: String
+        email: String
     ) {
-        val firstName = ViewModelValidator.validateNameField(firstNameField)
-        val lastName = ViewModelValidator.validateNameField(lastNameField)
-        val email = ViewModelValidator.validateEmailField(emailField)
+        val firstNameStatus = ViewModelValidator.validateNameField(firstName)
+        val lastNameStatus = ViewModelValidator.validateNameField(lastName)
+        val emailStatus = ViewModelValidator.validateEmailField(email)
 
-        if (firstName != null || lastName != null || email != null) {
+        if (firstNameStatus != null || lastNameStatus != null || emailStatus != null) {
             _state.value = RegistrationPageStates.RegistrationFieldsState(
-                firstNameState = firstName, lastNameState = lastName, emailState = email
+                firstNameState = firstNameStatus, lastNameState = lastNameStatus, emailState = emailStatus
             )
         } else {
-            //TODO Should send data to back
-            _state.value = RegistrationPageStates.Register
+            userInteractor.setRegistrationData(
+                UserRegistrationData(
+                    firstName = firstName,
+                    lastName = lastName,
+                    role = role,
+                    email = email
+                )
+            )
+            registerUser(email)
+            _state.value = RegistrationPageStates.Loading
         }
     }
+
+    private fun checkEmailValidation() {
+       launch {
+           val result = userInteractor.checkEmailVerificationStatus()
+           when (result) {
+               FireBasePostResponse.SUCCESS -> _state.value = RegistrationPageStates.EmailVerified
+               FireBasePostResponse.EMAIL_NOT_VERIFIED -> {}
+               else ->  {
+                   _state.value = RegistrationPageStates.Error(R.string.error_unknown_error)
+                   Log.e("RegistrationViewModel", "ERROR STATE: ${result.name}")
+               }
+           }
+       }
+    }
+
+    private fun registerUser(email: String) = launch {
+        val result = userInteractor.registerUser(email)
+        when (result) {
+            FireBasePostResponse.SUCCESS -> {
+                _state.value = RegistrationPageStates.ShowSuccess
+            }
+            FireBasePostResponse.FAILED -> _state.value =
+                RegistrationPageStates.Error(R.string.error_failed_to_register)
+
+            FireBasePostResponse.NETWORK_ERROR -> _state.value =
+                RegistrationPageStates.Error(R.string.error_no_internet)
+
+            FireBasePostResponse.INVALID_EMAIL -> _state.value =
+                RegistrationPageStates.Error(R.string.error_invalid_email_address)
+
+            FireBasePostResponse.EMAIL_ALREADY_IN_USE -> _state.value =
+                RegistrationPageStates.Error(R.string.error_email_already_exists)
+
+            FireBasePostResponse.USER_EXISTS -> _state.value =
+                RegistrationPageStates.Error(R.string.error_users_with_current_email_exists)
+
+            else -> {
+                _state.value = RegistrationPageStates.Error(R.string.error_unknown_error)
+            }
+        }
+    }
+
 }

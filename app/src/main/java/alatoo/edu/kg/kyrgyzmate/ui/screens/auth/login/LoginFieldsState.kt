@@ -11,4 +11,9 @@ sealed interface LoginPageState : BaseState {
     data object RoleLecturer : LoginPageState
     data object ForgotPassword: LoginPageState
     data object Register: LoginPageState
+    data object Loading: LoginPageState
+    data object OpenGmail: LoginPageState
+    data class Error(
+        val messageRes: Int
+    ): LoginPageState
 }

@@ -1,7 +1,7 @@
 package alatoo.edu.kg.kyrgyzmate.ui.screens.auth.registration
 
 import alatoo.edu.kg.kyrgyzmate.core.BaseAction
-import alatoo.edu.kg.kyrgyzmate.domain.model.role.UserRole
+import alatoo.edu.kg.kyrgyzmate.data.dto.user.UserRole
 
 sealed interface RegistrationPageAction : BaseAction{
     data class SubmitUserData(
@@ -13,4 +13,6 @@ sealed interface RegistrationPageAction : BaseAction{
     ): RegistrationPageAction
 
     data object Popup: RegistrationPageAction
+
+    data object UserComeBack : RegistrationPageAction
 }

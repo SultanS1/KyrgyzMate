@@ -13,5 +13,11 @@ sealed interface RegistrationPageStates : BaseState{
 
     data object Popup: RegistrationPageStates
 
-    data object Register: RegistrationPageStates
+    data class Error(val messageRes: Int): RegistrationPageStates
+
+    data object Loading: RegistrationPageStates
+
+    data object ShowSuccess: RegistrationPageStates
+
+    data object EmailVerified: RegistrationPageStates
 }

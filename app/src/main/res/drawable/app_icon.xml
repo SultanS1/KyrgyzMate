@@ -1,0 +1,28 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="32dp"
+    android:height="32dp"
+    android:viewportWidth="512"
+    android:viewportHeight="512">
+
+    <!-- Background Rounded Rectangle -->
+    <path
+        android:fillColor="#42A5F5"
+        android:pathData="M100,0h312a100,100 0 0 1 100,100v312a100,100 0 0 1 -100,100H100a100,100 0 0 1 -100,-100V100A100,100 0 0 1 100,0z" />
+
+    <!-- Speech Bubble -->
+    <path
+        android:fillColor="@android:color/white"
+        android:strokeColor="#1E88E5"
+        android:strokeWidth="10"
+        android:strokeLineJoin="round"
+        android:pathData="M140,160c0,-20 20,-40 40,-40h200c20,0 40,20 40,40v100c0,20 -20,40 -40,40H240l-60,60v-60h-0.1c-20,0 -40,-20 -40,-40v-100z" />
+
+    <!-- Corrected 'КМ' positioned inside speech bubble -->
+    <path
+        android:fillColor="#1565C0"
+        android:pathData="M200,230h30l30,-50h20v100h-20v-70l-30,50h-30v-80h20v50z
+                         M320,230h40v20h-40v30h50v20h-70v-100h70v20h-50v10z" />
+
+</vector>
+
+
