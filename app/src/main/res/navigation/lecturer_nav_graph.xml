@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/lecturer_nav_graph"
+    app:startDestination="@id/lecturerProfileFragment">
+
+    <fragment
+        android:id="@+id/lecturerProfileFragment"
+        android:name="alatoo.edu.kg.kyrgyzmate.ui.screens.lecturer_feature.home.profile.LecturerProfileFragment"
+        android:label="LecturerProfileFragment" />
+    <fragment
+        android:id="@+id/lecturerGroupsFragment"
+        android:name="alatoo.edu.kg.kyrgyzmate.ui.screens.lecturer_feature.home.groups.LecturerGroupsFragment"
+        android:label="LecturerGroupsFragment" />
+</navigation>

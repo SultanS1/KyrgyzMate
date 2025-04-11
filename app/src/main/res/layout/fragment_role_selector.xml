@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:gravity="center">
+
+    <TextView
+        style="@style/TextSubtitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Choose your role. Are you lecturer or student?"
+        android:textAlignment="center"
+        android:textColor="@color/field_description_color"/>
+
+    <Button
+        android:id="@+id/studentButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_8dp_bg"
+        android:backgroundTint="@color/action_color"
+        android:text="Student"
+        android:textAllCaps="false"
+        android:textSize="14sp"
+        android:padding="16dp"
+        android:textColor="@color/white"
+        android:layout_marginTop="24dp"/>
+
+    <Button
+        android:id="@+id/lecturerButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_input_field_bg"
+        android:text="Lecturer"
+        android:textAllCaps="false"
+        android:textSize="14sp"
+        android:padding="16dp"
+        android:textColor="@color/black"
+        android:layout_marginTop="24dp"/>
+
+</LinearLayout>

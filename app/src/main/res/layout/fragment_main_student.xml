@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="@dimen/dp_2x"
+        android:layout_marginTop="@dimen/dp_3x">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Courses"
+            style="@style/TextTitle"
+            android:textColor="@color/black"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1"/>
+
+        <ImageView
+            android:id="@+id/iconView"
+            android:layout_width="31dp"
+            android:layout_height="31dp"
+            android:src="@drawable/ic_kg_flag"/>
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/coursesRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingHorizontal="@dimen/dp_2x"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:paddingVertical="20dp"
+        android:clipToPadding="false"
+        tools:listitem="@layout/item_course"/>
+
+</LinearLayout>

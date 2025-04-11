@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:padding="@dimen/dp_2x"
+    android:elevation="8dp"
+    android:layout_marginVertical="@dimen/dp_1x"
+    android:background="@drawable/rounded_16dp_bg"
+    android:backgroundTint="@color/action_color">
+
+    <TextView
+        android:id="@+id/levelTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/TextSubtitle"
+        android:textColor="@color/white"
+        tools:text="Beginner"
+        android:text="Beginner"
+        android:textStyle="bold"
+        android:layout_marginHorizontal="@dimen/dp_1x"/>
+
+    <TextView
+        android:id="@+id/levelDescriptionTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/TextBody"
+        android:textColor="@color/white"
+        android:maxLines="5"
+        android:ellipsize="end"
+        tools:text="Beginner"
+        android:text="Beginner"
+        android:layout_marginTop="@dimen/dp_1x"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginTop="@dimen/dp_2x">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/TextSmall"
+            tools:text="5 lessons"
+            android:text="5 lessons"
+            android:background="@drawable/rounded_16dp_bg"
+            android:backgroundTint="@color/purple"
+            android:paddingHorizontal="@dimen/dp_2x"
+            android:paddingVertical="4dp"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_star"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/TextCaption"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:layout_marginHorizontal="4dp"
+            tools:text="50%"
+            android:text="50%"/>
+
+        <ProgressBar
+            android:id="@+id/progressBar1"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="0dp"
+            android:layout_height="5dp"
+            android:layout_marginHorizontal="2dp"
+            android:layout_weight="1"
+            android:max="10000"
+            android:progress="40"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>

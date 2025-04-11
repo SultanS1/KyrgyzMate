@@ -1,4 +1,39 @@
 <resources>
     <string name="app_name">KyrgyzMate</string>
     <string name="kyrgyzmate">KyrgyzMate</string>
+    <string name="courses">Courses</string>
+    <string name="translator">Translator</string>
+    <string name="profile">Profile</string>
+    <string name="first_name">First name:</string>
+    <string name="last_name">Last name:</string>
+    <string name="status">Status:</string>
+    <string name="e_mail">E-mail:</string>
+    <string name="group">Group:</string>
+    <string name="language_level">Language level:</string>
+    <string name="translate">Translate</string>
+    <string name="camera">Camera</string>
+
+    // Actions
+    <string name="action_open_gmail">Open Gmail</string>
+    <string name="action_resend">Resend</string>
+    <string name="action_ok">Ok</string>
+    <string name="action_no">No</string>
+
+    // Titles
+    <string name="title_deeplink_to_pass_registration">We\'ve sent the link to your gmail address, please confirm your email address</string>
+    <string name="title_link_to_reset_password">We\'ve sent the link to your gmail address</string>
+    <string name="groups">Groups</string>
+    <string name="title_unfinished_registration">You have not finished registration process. Do you want to continue it?</string>
+    <string name="title_email_is_not_confirmed">To finish your registration, please confirm your email address</string>
+
+    // Errors
+    <string name="error_no_internet">No internet connection!!</string>
+    <string name="error_bad_internet_connection">Bad internet connection!!</string>
+    <string name="error_failed_to_register">Failed registration, please try again</string>
+    <string name="error_invalid_email_address">Invalid email address</string>
+    <string name="error_wrong_credentials">Wrong credentials</string>
+    <string name="error_email_already_exists">Email already exists</string>
+    <string name="error_users_with_current_email_exists">Users with current email exists</string>
+    <string name="error_unknown_error">Ups, something went wrong</string>
+
 </resources>

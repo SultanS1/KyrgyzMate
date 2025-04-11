@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/auth_nav_graph"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="alatoo.edu.kg.kyrgyzmate.ui.screens.auth.splash.SplashFragment"
+        android:label="SplashFragment"/>
+    <fragment
+        android:id="@+id/registrationFragment"
+        android:name="alatoo.edu.kg.kyrgyzmate.ui.screens.auth.registration.RegistrationFragment"
+        android:label="RegistrationFragment" >
+        <action
+            android:id="@+id/action_registrationFragment_to_createPasswordFragment"
+            app:destination="@id/createPasswordFragment" />
+        <argument
+            android:name="role"
+            app:argType="alatoo.edu.kg.kyrgyzmate.data.dto.user.UserRole"
+            android:defaultValue="STUDENT" />
+    </fragment>
+    <fragment
+        android:id="@+id/resetPassFragment"
+        android:name="alatoo.edu.kg.kyrgyzmate.ui.screens.auth.forgot_pass.ResetPassFragment"
+        android:label="ResetPassFragment" />
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="alatoo.edu.kg.kyrgyzmate.ui.screens.auth.login.LoginFragment"
+        android:label="LoginFragment" >
+    </fragment>
+    <fragment
+        android:id="@+id/lecturerFragment"
+        android:name="alatoo.edu.kg.kyrgyzmate.ui.screens.lecturer_feature.LecturerFragment"
+        android:label="LecturerFragment" />
+    <fragment
+        android:id="@+id/studentFragment"
+        android:name="alatoo.edu.kg.kyrgyzmate.ui.screens.student_feature.StudentFragment"
+        android:label="StudentFragment" />
+    <fragment
+        android:id="@+id/createPasswordFragment"
+        android:name="alatoo.edu.kg.kyrgyzmate.ui.screens.auth.create_password.CreatePasswordFragment"
+        android:label="CreatePasswordFragment" >
+        <action
+            android:id="@+id/action_createPasswordFragment_to_successFragment"
+            app:destination="@id/successFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/successFragment"
+        android:name="alatoo.edu.kg.kyrgyzmate.ui.screens.auth.create_password.SuccessFragment"
+        android:label="SuccessFragment"/>
+    <fragment
+        android:id="@+id/roleSelectorFragment"
+        android:name="alatoo.edu.kg.kyrgyzmate.ui.screens.auth.registration.RoleSelectorFragment"
+        android:label="RoleSelectorFragment" >
+        <action
+            android:id="@+id/action_roleSelectorFragment_to_registrationFragment"
+            app:destination="@id/registrationFragment" />
+    </fragment>
+</navigation>
