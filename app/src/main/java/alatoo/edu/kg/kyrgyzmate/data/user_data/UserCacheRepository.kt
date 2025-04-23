@@ -6,7 +6,7 @@ import alatoo.edu.kg.kyrgyzmate.data.dto.user.UserRegistrationData
 import android.content.SharedPreferences
 import kotlinx.coroutines.flow.MutableStateFlow
 
-private const val USER_IS_IN = "USER_IS_IN"
+private const val USER_ROLE = "USER_ROLE"
 class UserCacheRepository(
     private val sharedPref: SharedPreferences
 ): UserLocalRepository {
@@ -15,13 +15,13 @@ class UserCacheRepository(
 
     private val userProfileFlow:  MutableStateFlow<User?> = MutableStateFlow(null)
 
-    override fun recordUserLogin(userRole: UserRole) {
-        sharedPref.edit().putString(USER_IS_IN, userRole.name).apply()
+    override fun setUserRole(userRole: UserRole) {
+        sharedPref.edit().putString(USER_ROLE, userRole.name).apply()
     }
 
-    override fun isUserLoggedIn(): UserRole {
+    override fun getUserRole(): UserRole {
         return try {
-            val result = sharedPref.getString(USER_IS_IN, UserRole.UNKOWN.name)
+            val result = sharedPref.getString(USER_ROLE, UserRole.UNKOWN.name)
             UserRole.valueOf(result!!)
         } catch (e: Exception) {
             UserRole.UNKOWN

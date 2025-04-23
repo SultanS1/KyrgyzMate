@@ -70,7 +70,10 @@ class RegistrationFragment :
 
                 RegistrationPageStates.Loading -> { requireContext().showLoadingDialog(viewLifecycleOwner.lifecycle) }
 
-                RegistrationPageStates.ShowSuccess -> showLinkSentDialog()
+                RegistrationPageStates.ShowSuccess -> {
+                    firstLaunch = false
+                    showLinkSentDialog()
+                }
 
                 RegistrationPageStates.EmailVerified -> findNavController().navigateTo(R.id.action_registrationFragment_to_createPasswordFragment)
             }
@@ -90,7 +93,6 @@ class RegistrationFragment :
             actionText = getString(R.string.action_open_gmail)
         ) {
             val intent = requireContext().packageManager.getLaunchIntentForPackage("com.google.android.gm")
-            firstLaunch = false
             if (intent != null) {
                 startActivity(intent)
             } else {

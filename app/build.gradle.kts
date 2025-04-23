@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     id("androidx.navigation.safeargs.kotlin")
+    id("kotlin-parcelize")
     alias(libs.plugins.google.gms.google.services)
 }
 
@@ -108,4 +109,7 @@ dependencies {
     //Firebase
     implementation(libs.firebase.auth.ktx)
     implementation(libs.firebase.database.ktx)
+
+    //shimmer
+    implementation(libs.shimmer)
 }

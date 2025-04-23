@@ -100,7 +100,9 @@ class RegistrationViewModel(
            val result = userInteractor.checkEmailVerificationStatus()
            when (result) {
                FireBasePostResponse.SUCCESS -> _state.value = RegistrationPageStates.EmailVerified
-               FireBasePostResponse.EMAIL_NOT_VERIFIED -> {}
+               FireBasePostResponse.EMAIL_NOT_VERIFIED -> {
+                   Log.e("RegistrationViewModel", "Not verified")
+               }
                else ->  {
                    _state.value = RegistrationPageStates.Error(R.string.error_unknown_error)
                    Log.e("RegistrationViewModel", "ERROR STATE: ${result.name}")

@@ -69,7 +69,7 @@ class LoginViewModel(
             val result = userInteractor.loginUser(email, password)
             when (result) {
                 FireBasePostResponse.SUCCESS -> {
-                    val role = userInteractor.isUserLoggedIn()
+                    val role = userInteractor.getUserRole()
                     when(role) {
                         UserRole.STUDENT -> _state.value = LoginPageState.RoleStudent
 

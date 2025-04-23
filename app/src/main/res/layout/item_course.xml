@@ -41,6 +41,7 @@
         android:layout_marginTop="@dimen/dp_2x">
 
         <TextView
+            android:id="@+id/levelLessons"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/TextSmall"
@@ -62,6 +63,7 @@
             android:src="@drawable/ic_star"/>
 
         <TextView
+            android:id="@+id/levelProgress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/TextCaption"

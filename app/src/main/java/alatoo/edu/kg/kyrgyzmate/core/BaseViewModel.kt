@@ -1,5 +1,6 @@
 package alatoo.edu.kg.kyrgyzmate.core
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
@@ -14,7 +15,7 @@ abstract class BaseViewModel<STATE : BaseState, ACTION : BaseAction>(private val
 
     private val coroutineScope =
         CoroutineScope(Dispatchers.Main.immediate + SupervisorJob() + CoroutineExceptionHandler() { coroutineContext, throwable ->
-            println(throwable.message)
+            Log.e("BaseViewModel", "Coroutine exception", throwable)
         })
 
     val state: StateFlow<STATE >

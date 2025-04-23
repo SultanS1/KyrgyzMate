@@ -4,46 +4,36 @@
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    android:background="@drawable/rounded_corner_with_stroke_16dp"
-    android:layout_marginVertical="4dp"
+    android:background="@drawable/rounded_corner_with_stroke_12dp"
+    android:layout_marginVertical="8dp"
     android:backgroundTint="@color/application_blue"
-    android:paddingHorizontal="12dp"
-    android:paddingVertical="4dp">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center">
-
-        <TextView
-            android:id="@+id/nativeDialogTextView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            tools:text="- Саламатсызбы!"
-            style="@style/TextBody"
-            android:textAlignment="textStart"
-            android:textColor="@color/black"
-            android:layout_marginEnd="24dp"/>
-
-        <ImageButton
-            android:id="@+id/audioControlButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_play_audio_white"
-            android:padding="@dimen/dp_1x"
-            android:background="#00000000"/>
-
-    </LinearLayout>
+    android:elevation="24dp"
+    android:translationZ="12dp"
+    android:padding="12dp">
 
     <TextView
-        android:id="@+id/learnerDialogTextView"
+        android:id="@+id/originalTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:text="- Hello!"
+        tools:text="Телефонузду үнсүз абалга аласызбы?"
         style="@style/TextBody"
-        android:textAlignment="textStart"
+        android:textStyle="bold"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:textAlignment="center"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:id="@+id/translationTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        tools:text="- Hello!"
+        android:maxLines="2"
+        android:ellipsize="end"
+        style="@style/TextBody"
+        android:textStyle="bold"
+        android:textAlignment="center"
         android:textColor="@color/white"
         android:layout_marginBottom="8dp"/>
 

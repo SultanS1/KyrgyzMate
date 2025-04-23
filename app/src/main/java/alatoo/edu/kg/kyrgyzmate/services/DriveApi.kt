@@ -1,6 +1,7 @@
 package alatoo.edu.kg.kyrgyzmate.services
 
 import alatoo.edu.kg.kyrgyzmate.core.BaseUrls
+import alatoo.edu.kg.kyrgyzmate.services.models.DriveItem
 import android.util.Log
 import org.json.JSONObject
 import java.net.HttpURLConnection
@@ -40,61 +41,4 @@ object DriveApi {
             emptyList()
         }
     }
-
-    fun findFolderByName(parentId: String, folderName: String): DriveItem? {
-        return listChildren(parentId).firstOrNull { it.isFolder && it.name == folderName }
-    }
-
-    fun listAudioFiles(parentId: String): List<DriveItem> {
-        val query = "'$parentId' in parents and trashed = false and mimeType contains 'audio/'"
-        val encodedQuery = URLEncoder.encode(query, "UTF-8")
-        val url = "$BASE_URL?q=$encodedQuery&fields=files(id,name,mimeType)&key=${BaseUrls.API_KEY}"
-        Log.d(TAG, "Audio files URL: $url")
-
-        return try {
-            val conn = URL(url).openConnection() as HttpURLConnection
-            conn.requestMethod = "GET"
-            val response = conn.inputStream.bufferedReader().use { it.readText() }
-            val files = JSONObject(response).optJSONArray("files") ?: return emptyList()
-
-            (0 until files.length()).map { i ->
-                val file = files.getJSONObject(i)
-                DriveItem(
-                    id = file.getString("id"),
-                    name = file.getString("name"),
-                    isFolder = false
-                )
-            }
-        } catch (e: Exception) {
-            Log.e(TAG, "Error listing audio files: ${e.message}", e)
-            emptyList()
-        }
-    }
-
-    fun listDocumentFiles(parentId: String): List<DriveItem> {
-        val query = "'$parentId' in parents and trashed = false and (mimeType = 'application/pdf' or mimeType = 'application/vnd.google-apps.document')"
-        val encodedQuery = URLEncoder.encode(query, "UTF-8")
-        val url = "$BASE_URL?q=$encodedQuery&fields=files(id,name,mimeType)&key=${BaseUrls.API_KEY}"
-        Log.d(TAG, "Document files URL: $url")
-
-        return try {
-            val conn = URL(url).openConnection() as HttpURLConnection
-            conn.requestMethod = "GET"
-            val response = conn.inputStream.bufferedReader().use { it.readText() }
-            val files = JSONObject(response).optJSONArray("files") ?: return emptyList()
-
-            (0 until files.length()).map { i ->
-                val file = files.getJSONObject(i)
-                DriveItem(
-                    id = file.getString("id"),
-                    name = file.getString("name"),
-                    isFolder = false
-                )
-            }
-        } catch (e: Exception) {
-            Log.e(TAG, "Error listing document files: ${e.message}", e)
-            emptyList()
-        }
-    }
-
 }

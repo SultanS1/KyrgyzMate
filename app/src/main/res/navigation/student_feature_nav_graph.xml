@@ -16,34 +16,70 @@
         android:id="@+id/themesFragment"
         android:name="alatoo.edu.kg.kyrgyzmate.ui.screens.student_feature.themes.ThemesFragment"
         android:label="ThemesFragment" >
+        <argument
+            android:name="parentInfo"
+            app:argType="alatoo.edu.kg.kyrgyzmate.data.dto.lessons.ParentInfo"
+            app:nullable="true" />
         <action
-            android:id="@+id/action_themesFragment_to_dialogFragment"
-            app:destination="@id/dialogFragment" />
-        <action
-            android:id="@+id/action_themesFragment_to_grammarFragment"
-            app:destination="@id/grammarFragment" />
-        <action
-            android:id="@+id/action_themesFragment_to_textsFragment"
-            app:destination="@id/textsFragment" />
-        <action
-            android:id="@+id/action_themesFragment_to_wordsFragment"
-            app:destination="@id/wordsFragment" />
+            android:id="@+id/action_themesFragment_to_topicsFragment"
+            app:destination="@id/topicsFragment" />
     </fragment>
     <fragment
         android:id="@+id/dialogFragment"
         android:name="alatoo.edu.kg.kyrgyzmate.ui.screens.student_feature.dialog.DialogFragment"
-        android:label="DialogFragment" />
+        android:label="DialogFragment" >
+        <argument
+            android:name="id"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
     <fragment
         android:id="@+id/grammarFragment"
         android:name="alatoo.edu.kg.kyrgyzmate.ui.screens.student_feature.grammar.GrammarFragment"
-        android:label="GrammarFragment" />
+        android:label="GrammarFragment" >
+        <argument
+            android:name="id"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
     <fragment
         android:id="@+id/textsFragment"
         android:name="alatoo.edu.kg.kyrgyzmate.ui.screens.student_feature.texts.TextsFragment"
-        android:label="TextsFragment" />
+        android:label="TextsFragment" >
+        <argument
+            android:name="id"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
     <fragment
         android:id="@+id/wordsFragment"
         android:name="alatoo.edu.kg.kyrgyzmate.ui.screens.student_feature.words.WordsFragment"
-        android:label="WordsFragment" />
+        android:label="WordsFragment" >
+        <argument
+            android:name="id"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/topicsFragment"
+        android:name="alatoo.edu.kg.kyrgyzmate.ui.screens.student_feature.topics.TopicsFragment"
+        android:label="TopicsFragment" >
+        <argument
+            android:name="themeType"
+            app:argType="alatoo.edu.kg.kyrgyzmate.data.dto.lessons.ThemeType"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_topicsFragment_to_dialogFragment"
+            app:destination="@id/dialogFragment" />
+        <action
+            android:id="@+id/action_topicsFragment_to_grammarFragment"
+            app:destination="@id/grammarFragment" />
+        <action
+            android:id="@+id/action_topicsFragment_to_textsFragment"
+            app:destination="@id/textsFragment" />
+        <action
+            android:id="@+id/action_topicsFragment_to_wordsFragment"
+            app:destination="@id/wordsFragment" />
+    </fragment>
 
 </navigation>

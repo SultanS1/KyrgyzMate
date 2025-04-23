@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/rounded_16dp_bg"
+    android:backgroundTint="@color/shimmer_light"
+    android:layout_marginVertical="@dimen/dp_1x"
+    android:gravity="center"
+    android:elevation="5dp"
+    android:padding="15dp">
+
+    <View
+        android:layout_width="80dp"
+        android:layout_height="20dp"
+        android:background="@color/shimmer_normal"
+        android:layout_marginHorizontal="@dimen/dp_1x"/>
+
+
+</LinearLayout>
