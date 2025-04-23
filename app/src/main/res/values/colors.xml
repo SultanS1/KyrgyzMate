@@ -19,7 +19,20 @@
     <color name="input_field_border_color">#E8ECF4</color>"
     <color name="input_hint_color">#4D000000</color>
 
+    <color name="shimmer_darker">#C8C8C8</color>
+    <color name="shimmer_normal">#DEE3E7</color>
+    <color name="shimmer_light">#F6F7F8</color>
+
+
     <color name="purple">#56BAEE</color>
     <color name="purple_light">#A8CAE0</color>"
     <color name="application_blue">#12AAFA</color>
+
+    <color name="beginner_color">#65A9C2</color>
+    <color name="elementary_color">#9ECC7F</color>
+    <color name="pre_intermediate_color">#A5B2E7</color>
+    <color name="intermediate_color">#4A67E1</color>
+    <color name="upper_intermediate_color">#DDC655</color>
+    <color name="advanced_color">#E3604E</color>
+    <color name="mastery_color">#497236</color>
 </resources>

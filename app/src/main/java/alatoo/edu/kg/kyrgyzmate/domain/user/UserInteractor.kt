@@ -60,7 +60,7 @@ class UserInteractor(
         }
         val user = userRestRepository.getUserProfile()
         if (user is FirebaseGetResponse.Success) {
-            recordUserLogin(UserRole.valueOf(user.data.role))
+            setUserRole(UserRole.valueOf(user.data.role))
             userLocalRepository.setUserProfile(user.data)
         }
         return result
@@ -74,13 +74,17 @@ class UserInteractor(
         return userRestRepository.resetPassword(email)
     }
 
-    // Cache
-    private fun recordUserLogin(userRole: UserRole) {
-        userLocalRepository.recordUserLogin(userRole)
+    suspend fun userSession(): Boolean {
+        return userRestRepository.userSessionIsActive()
     }
 
-    fun isUserLoggedIn(): UserRole {
-        return userLocalRepository.isUserLoggedIn()
+    // Cache
+    private fun setUserRole(userRole: UserRole) {
+        userLocalRepository.setUserRole(userRole)
+    }
+
+    fun getUserRole(): UserRole {
+        return userLocalRepository.getUserRole()
     }
 
     fun setRegistrationData(userRegistrationData: UserRegistrationData?) {

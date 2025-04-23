@@ -4,12 +4,12 @@
     <string name="courses">Courses</string>
     <string name="translator">Translator</string>
     <string name="profile">Profile</string>
-    <string name="first_name">First name:</string>
-    <string name="last_name">Last name:</string>
-    <string name="status">Status:</string>
-    <string name="e_mail">E-mail:</string>
-    <string name="group">Group:</string>
-    <string name="language_level">Language level:</string>
+    <string name="first_name">First name</string>
+    <string name="last_name">Last name</string>
+    <string name="status">Status</string>
+    <string name="e_mail">E-mail</string>
+    <string name="group">Group</string>
+    <string name="language_level">Level</string>
     <string name="translate">Translate</string>
     <string name="camera">Camera</string>
 
@@ -35,5 +35,8 @@
     <string name="error_email_already_exists">Email already exists</string>
     <string name="error_users_with_current_email_exists">Users with current email exists</string>
     <string name="error_unknown_error">Ups, something went wrong</string>
+    <string name="log_out">Log out</string>
+    <string name="edit">Edit</string>
+    <string name="last_topic_passed">Last topic passed</string>
 
 </resources>

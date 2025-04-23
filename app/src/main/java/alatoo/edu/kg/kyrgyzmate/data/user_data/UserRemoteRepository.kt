@@ -41,6 +41,7 @@ class UserRemoteRepository(
         return try {
             val user = firebaseAuth.currentUser ?: return FireBasePostResponse.USER_NOT_FOUND
             user.sendEmailVerification().await()
+            Log.e("UserRepository", "link is sent")
             FireBasePostResponse.SUCCESS
         } catch (e: Exception) {
             Log.e("UserRepository", "Error: ${e.message}")
@@ -53,8 +54,10 @@ class UserRemoteRepository(
             val user = firebaseAuth.currentUser
             user?.reload()?.await()
             if (user?.isEmailVerified == true) {
+                Log.d("UserRepository", "Success")
                 FireBasePostResponse.SUCCESS
             } else {
+                Log.d("UserRepository", "Not verified")
                 FireBasePostResponse.EMAIL_NOT_VERIFIED
             }
         } catch (e: Exception) {
@@ -66,11 +69,16 @@ class UserRemoteRepository(
     override suspend fun createPassword(password: String): FireBasePostResponse {
         return try {
             firebaseAuth.currentUser?.updatePassword(password)?.await()
+            Log.d("UserRepository", "Password is created")
             FireBasePostResponse.SUCCESS
         } catch (e: Exception) {
             Log.e("UserRepository", "Error: ${e.message}")
             FireBasePostResponse.UNKNOWN_ERROR
         }
+    }
+
+    override suspend fun userSessionIsActive(): Boolean {
+        return firebaseAuth.currentUser != null
     }
 
     override suspend fun loginUser(email: String, password: String): FireBasePostResponse {
@@ -135,7 +143,7 @@ class UserRemoteRepository(
             firebaseDb.child("users").child(user.uid).setValue(user).await()
             FireBasePostResponse.SUCCESS
         } catch (e: Exception) {
-            Log.e("UserRepository", "Error: ${e.message}")
+            Log.e("UserRepository", "Error in profile creation: ${e.message}")
             FireBasePostResponse.UNKNOWN_ERROR
         }
     }
@@ -152,9 +160,11 @@ class UserRemoteRepository(
                     FirebaseGetResponse.Error("User data is null")
                 }
             } else {
+                Log.e("UserRepository", "not found")
                 FirebaseGetResponse.Error("Not found")
             }
         } catch (e: Exception) {
+            Log.e("UserRepository", "Error: ${e.message}")
             FirebaseGetResponse.Error(e.message.toString())
         }
     }

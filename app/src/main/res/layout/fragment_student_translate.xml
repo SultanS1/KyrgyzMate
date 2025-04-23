@@ -14,7 +14,7 @@
         android:layout_weight="1"
         android:layout_marginTop="10dp"
         android:padding="10dp"
-        android:background="@drawable/rounded_corner_with_stroke_16dp">
+        android:background="@drawable/rounded_corner_with_stroke_12dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/contentTextEditText"

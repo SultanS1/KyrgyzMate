@@ -52,8 +52,8 @@ fun View.pressCompressInAnimation() {
         when(event.action) {
             MotionEvent.ACTION_DOWN -> {
                 view.animate()
-                    .scaleX(0.98f)
-                    .scaleY(0.98f)
+                    .scaleX(0.97f)
+                    .scaleY(0.97f)
                     .setDuration(50)
                     .start()
                 true

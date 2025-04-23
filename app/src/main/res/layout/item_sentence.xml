@@ -4,9 +4,31 @@
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    android:background="@drawable/rounded_corner_with_stroke_16dp"
-    android:layout_marginVertical="4dp"
-    android:padding="8dp">
+    android:background="@drawable/rounded_corner_with_stroke_12dp"
+    android:layout_marginVertical="8dp"
+    android:padding="12dp">
+
+    <TextView
+        android:id="@+id/originalTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="- Саламатсызбы!"
+        style="@style/TextBody"
+        android:textStyle="italic"
+        android:textAlignment="textStart"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:id="@+id/translationTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="- Hello!"
+        style="@style/TextBody"
+        android:textStyle="italic"
+        android:textAlignment="textStart"
+        android:layout_marginTop="@dimen/dp_1x"
+        android:textColor="@color/application_blue"
+        android:layout_marginBottom="8dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,36 +36,31 @@
         android:orientation="horizontal"
         android:gravity="center">
 
-        <TextView
-            android:id="@+id/nativeDialogTextView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            tools:text="- Саламатсызбы!"
-            style="@style/TextBody"
-            android:textAlignment="textStart"
-            android:textColor="@color/black"
-            android:layout_marginEnd="24dp"/>
-
         <ImageButton
             android:id="@+id/audioControlButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_play_audio_blue"
-            android:padding="@dimen/dp_1x"
+            android:scaleType="fitCenter"
+            android:padding="4dp"
             android:background="#00000000"/>
 
-    </LinearLayout>
+        <SeekBar
+            android:id="@+id/seekBar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:progressBackgroundTint="@color/action_color"
+            android:pointerIcon="none"
+            android:max="1000" />
 
-    <TextView
-        android:id="@+id/learnerDialogTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:text="- Hello!"
-        style="@style/TextBody"
-        android:textAlignment="textStart"
-        android:layout_marginTop="@dimen/dp_1x"
-        android:textColor="@color/application_blue"
-        android:layout_marginBottom="8dp"/>
+        <TextView
+            android:id="@+id/timerText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00:00"
+            android:paddingStart="8dp" />
+
+    </LinearLayout>
 
 </LinearLayout>

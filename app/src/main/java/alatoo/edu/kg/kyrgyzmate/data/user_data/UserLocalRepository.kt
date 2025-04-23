@@ -6,8 +6,8 @@ import alatoo.edu.kg.kyrgyzmate.data.dto.user.UserRegistrationData
 
 interface UserLocalRepository {
 
-    fun recordUserLogin(userRole: UserRole)
-    fun isUserLoggedIn(): UserRole
+    fun setUserRole(userRole: UserRole)
+    fun getUserRole(): UserRole
 
     fun setRegistrationData(registrationData: UserRegistrationData? = null)
     fun getRegistrationData(): UserRegistrationData?

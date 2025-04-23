@@ -15,6 +15,8 @@ interface UserRestRepository {
 
     suspend fun createPassword(password: String): FireBasePostResponse
 
+    suspend fun userSessionIsActive(): Boolean
+
     suspend fun loginUser(email: String, password: String): FireBasePostResponse
 
     suspend fun signOut(): FireBasePostResponse
