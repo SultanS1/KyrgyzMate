@@ -42,13 +42,7 @@ class ThemesFragment : BaseFragment<FragmentThemesBinding, ThemesStates, ThemesA
 
     override fun renderState(state: ThemesStates) {
         when(state) {
-            is ThemesStates.Error -> {
-                requireContext().showOneActionDialog(
-                    "Error: ${state.message}", "Ok"
-                ) {
-                    it.dismiss()
-                }
-            }
+            is ThemesStates.Error -> showErrorDialog(R.string.error_unknown_error)
             is ThemesStates.Loading -> {
                 binding.recyclerView.isVisible = false
                 binding.shimmerView.isVisible = true

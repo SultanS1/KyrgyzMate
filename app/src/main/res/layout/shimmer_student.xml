@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:padding="@dimen/dp_2x"
+    android:elevation="8dp"
+    android:layout_marginVertical="@dimen/dp_1x"
+    android:background="@drawable/rounded_24dp_bg"
+    android:backgroundTint="@color/shimmer_light">
+
+    <View
+        android:layout_width="80dp"
+        android:layout_height="12dp"
+        android:background="@color/shimmer_darker"
+        android:layout_marginHorizontal="@dimen/dp_1x"
+        android:layout_gravity="center"/>
+
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="2"
+        android:layout_marginTop="8dp"
+        android:paddingEnd="8dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="Last seen"
+            android:padding="10dp"
+            style="@style/TextCaption"
+            android:textColor="@color/input_hint_color" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="10dp"
+            android:layout_columnWeight="2.25"
+            android:background="@color/shimmer_darker"
+            android:layout_marginHorizontal="@dimen/dp_1x"
+            android:layout_gravity="center_vertical"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0.5dp"
+            android:layout_columnWeight="1"
+            android:layout_columnSpan="2"
+            android:background="@color/input_hint_color" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="Topic"
+            android:padding="10dp"
+            style="@style/TextCaption"
+            android:textColor="@color/input_hint_color"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="10dp"
+            android:layout_columnWeight="2.25"
+            android:background="@color/shimmer_darker"
+            android:layout_marginHorizontal="@dimen/dp_1x"
+            android:layout_gravity="center_vertical"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0.5dp"
+            android:layout_columnWeight="1"
+            android:layout_columnSpan="2"
+            android:background="@color/input_hint_color" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:padding="10dp"
+            android:text="Progress"
+            style="@style/TextCaption"
+            android:textColor="@color/input_hint_color"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="10dp"
+            android:layout_columnWeight="2.25"
+            android:background="@color/shimmer_darker"
+            android:layout_marginHorizontal="@dimen/dp_1x"
+            android:layout_gravity="center_vertical"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0.5dp"
+            android:layout_columnWeight="1"
+            android:layout_columnSpan="2"
+            android:background="@color/input_hint_color" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:padding="10dp"
+            android:text="Level"
+            style="@style/TextCaption"
+            android:textColor="@color/input_hint_color"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="10dp"
+            android:layout_columnWeight="2.25"
+            android:background="@color/shimmer_darker"
+            android:layout_marginHorizontal="@dimen/dp_1x"
+            android:layout_gravity="center_vertical"/>
+
+    </GridLayout>
+
+</LinearLayout>

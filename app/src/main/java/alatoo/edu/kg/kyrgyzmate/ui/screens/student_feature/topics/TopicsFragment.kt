@@ -55,13 +55,7 @@ class TopicsFragment
                 binding.shimmerViewTopics.isVisible = false
                 binding.recyclerView.isVisible = true
             }
-            is TopicsStates.Error -> {
-                requireContext().showOneActionDialog(
-                    "Error: ${state.message}", "Ok"
-                ) {
-                    it.dismiss()
-                }
-            }
+            is TopicsStates.Error -> showErrorDialog(R.string.error_unknown_error)
 
             is TopicsStates.NavigateToTopic -> {
                 when(theme) {

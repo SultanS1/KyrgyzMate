@@ -1,5 +1,7 @@
 package alatoo.edu.kg.kyrgyzmate.core
 
+import alatoo.edu.kg.kyrgyzmate.R
+import alatoo.edu.kg.kyrgyzmate.extensions.showOneActionDialog
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
@@ -30,4 +32,12 @@ abstract class BaseFragment<Binding: ViewBinding, STATE: BaseState, ACTION: Base
     abstract fun setupUI()
 
     abstract fun renderState(state: STATE)
+
+    protected fun showErrorDialog(messageRes: Int) {
+        requireContext().showOneActionDialog(
+            getString(messageRes), getString(R.string.action_ok)
+        ) {
+            it.dismiss()
+        }
+    }
 }

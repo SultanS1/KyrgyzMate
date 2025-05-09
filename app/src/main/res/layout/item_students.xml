@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:padding="@dimen/dp_2x"
+    android:elevation="8dp"
+    android:layout_marginVertical="@dimen/dp_1x"
+    android:background="@drawable/rounded_24dp_bg"
+    android:backgroundTint="@color/purple">
+
+    <TextView
+        android:id="@+id/fullNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/TextSubtitle"
+        android:textColor="@color/black"
+        tools:text="Name surname"
+        android:textStyle="bold"
+        android:layout_gravity="center"/>
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="2"
+        android:layout_marginTop="8dp"
+        android:paddingEnd="8dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="Last seen"
+            android:padding="10dp"
+            style="@style/TextCaption"
+            android:textColor="@color/input_hint_color" />
+
+        <TextView
+            android:id="@+id/lastSeenTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="2.25"
+            android:text="2 days ago"
+            android:maxLines="2"
+            android:ellipsize="end"
+            style="@style/TextBody"
+            android:textColor="@color/black" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0.5dp"
+            android:layout_columnWeight="1"
+            android:layout_columnSpan="2"
+            android:background="@color/input_hint_color" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="Topic"
+            android:padding="10dp"
+            style="@style/TextCaption"
+            android:textColor="@color/input_hint_color"/>
+
+        <TextView
+            android:id="@+id/lastTopicTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="2.25"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:text="Beginner/Words/My day"
+            style="@style/TextBody"
+            android:textColor="@color/black" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0.5dp"
+            android:layout_columnWeight="1"
+            android:layout_columnSpan="2"
+            android:background="@color/input_hint_color" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:padding="10dp"
+            android:text="Progress"
+            style="@style/TextCaption"
+            android:textColor="@color/input_hint_color"/>
+
+        <TextView
+            android:id="@+id/progressTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="2.25"
+            android:maxLines="2"
+            android:ellipsize="end"
+            style="@style/TextBody"
+            android:text="10 %"
+            android:textColor="@color/black" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0.5dp"
+            android:layout_columnWeight="1"
+            android:layout_columnSpan="2"
+            android:background="@color/input_hint_color" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:padding="10dp"
+            android:text="Email"
+            style="@style/TextCaption"
+            android:textColor="@color/input_hint_color"/>
+
+        <TextView
+            android:id="@+id/emailTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="2.25"
+            android:maxLines="2"
+            android:ellipsize="end"
+            style="@style/TextBody"
+            android:text="somebody@gmail.com"
+            android:textColor="@color/black" />
+
+    </GridLayout>
+
+</LinearLayout>

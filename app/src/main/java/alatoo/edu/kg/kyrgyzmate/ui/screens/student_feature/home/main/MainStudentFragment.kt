@@ -52,13 +52,7 @@ class MainStudentFragment
                 adapter.submitList(state.levels)
             }
 
-            is MainStudentStates.Error -> {
-                requireContext().showOneActionDialog(
-                    "Error: ${state.message}", "Ok"
-                ) {
-                    it.dismiss()
-                }
-            }
+            is MainStudentStates.Error -> showErrorDialog(R.string.error_unknown_error)
 
         }
     }

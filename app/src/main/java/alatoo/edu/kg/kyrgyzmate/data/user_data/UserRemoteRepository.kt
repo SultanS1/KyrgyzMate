@@ -2,8 +2,10 @@ package alatoo.edu.kg.kyrgyzmate.data.user_data
 
 import alatoo.edu.kg.kyrgyzmate.data.dto.status.FireBasePostResponse
 import alatoo.edu.kg.kyrgyzmate.data.dto.status.FirebaseGetResponse
+import alatoo.edu.kg.kyrgyzmate.data.dto.student.StudentGroupInfo
 import alatoo.edu.kg.kyrgyzmate.data.dto.user.User
 import alatoo.edu.kg.kyrgyzmate.data.dto.user.UserRegistrationData
+import alatoo.edu.kg.kyrgyzmate.data.dto.user.UserRole
 import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
@@ -141,9 +143,17 @@ class UserRemoteRepository(
         )
         return try {
             firebaseDb.child("users").child(user.uid).setValue(user).await()
+            if(userRegistrationData?.role == UserRole.STUDENT) {
+                firebaseDb.child("student_info").child(user.uid).setValue(
+                    StudentGroupInfo(
+                        fullName = user.name + " " + user.surname,
+                        email = user.email
+                    )
+                ).await()
+            }
             FireBasePostResponse.SUCCESS
-        } catch (e: Exception) {
-            Log.e("UserRepository", "Error in profile creation: ${e.message}")
+        } catch (t: Throwable) {
+            Log.e("UserRepository", "Error in profile creation: ${t.message}")
             FireBasePostResponse.UNKNOWN_ERROR
         }
     }

@@ -18,7 +18,7 @@
         android:id="@+id/studentButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/rounded_8dp_bg"
+        android:background="@drawable/rounded_16dp_bg"
         android:backgroundTint="@color/action_color"
         android:text="Student"
         android:textAllCaps="false"

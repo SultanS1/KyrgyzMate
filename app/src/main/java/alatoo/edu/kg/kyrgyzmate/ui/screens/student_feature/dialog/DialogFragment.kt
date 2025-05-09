@@ -53,13 +53,7 @@ class DialogFragment
             is DialogStates.UpdatePlayedData -> {
                 adapter.notifyItemChanged(state.position)
             }
-            is DialogStates.Error -> {
-                requireContext().showOneActionDialog(
-                    "Error: ${state.message}", "Ok"
-                ) {
-                    it.dismiss()
-                }
-            }
+            is DialogStates.Error -> showErrorDialog(R.string.error_unknown_error)
         }
     }
 }

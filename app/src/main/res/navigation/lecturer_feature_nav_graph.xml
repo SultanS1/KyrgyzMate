@@ -1,6 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/lecturer_feature_nav_graph">
-
+    android:id="@+id/lecturer_feature_nav_graph"
+    app:startDestination="@id/lecturerHomeFragment">
+    <fragment
+        android:id="@+id/lecturerHomeFragment"
+        android:name="alatoo.edu.kg.kyrgyzmate.ui.screens.lecturer_feature.home.LecturerHomeFragment"
+        android:label="LecturerHomeFragment" >
+        <action
+            android:id="@+id/action_lecturerHomeFragment_to_lecturerGroupFragment2"
+            app:destination="@id/lecturerGroupFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createNewGroupFragment"
+        android:name="alatoo.edu.kg.kyrgyzmate.ui.screens.lecturer_feature.new_group.CreateNewGroupFragment"
+        android:label="CreateNewGroupFragment" />
+    <fragment
+        android:id="@+id/lecturerGroupFragment"
+        android:name="alatoo.edu.kg.kyrgyzmate.ui.screens.lecturer_feature.group.LecturerGroupFragment"
+        android:label="LecturerGroupFragment" >
+        <argument
+            android:name="group"
+            app:argType="alatoo.edu.kg.kyrgyzmate.data.dto.groups.GroupItem"
+            app:nullable="true" />
+    </fragment>
 </navigation>

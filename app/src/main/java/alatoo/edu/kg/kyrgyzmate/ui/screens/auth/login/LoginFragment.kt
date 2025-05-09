@@ -88,12 +88,4 @@ class LoginFragment :
             }
         }
     }
-
-    private fun showErrorDialog(messageRes: Int) {
-        requireContext().showOneActionDialog(
-            getString(messageRes), getString(R.string.action_ok)
-        ) {
-            it.dismiss()
-        }
-    }
 }

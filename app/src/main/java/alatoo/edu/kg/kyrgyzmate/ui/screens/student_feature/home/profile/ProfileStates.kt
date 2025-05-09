@@ -9,5 +9,9 @@ sealed interface ProfileStates : BaseState {
 
     data class ShowProfile(val profile: StudentProfile) : ProfileStates
 
+    data class ShowEditProfile(val profile: StudentProfile) : ProfileStates
+
+    data object Logout : ProfileStates
+
     data class Error(val message: String) : ProfileStates
 }

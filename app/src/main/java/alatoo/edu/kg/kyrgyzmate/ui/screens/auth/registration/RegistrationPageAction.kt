@@ -7,7 +7,6 @@ sealed interface RegistrationPageAction : BaseAction{
     data class SubmitUserData(
         val firstName: String,
         val lastName: String,
-        val group: String,
         val role: UserRole,
         val email: String
     ): RegistrationPageAction

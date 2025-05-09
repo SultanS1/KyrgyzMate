@@ -17,7 +17,7 @@
         android:paddingHorizontal="48dp"
         android:paddingVertical="28dp"
         android:textAlignment="center"
-        android:background="@drawable/rounded_16dp_bg"
+        android:background="@drawable/rounded_24dp_bg"
         android:backgroundTint="@color/input_field_color"
         android:textColor="@color/field_description_color"/>
 
@@ -25,7 +25,7 @@
         android:id="@+id/okButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/rounded_8dp_bg"
+        android:background="@drawable/rounded_16dp_bg"
         android:backgroundTint="@color/action_color"
         android:text="Ok"
         android:textAllCaps="false"
