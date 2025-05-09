@@ -3,17 +3,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/input_field_border_color">
+    android:background="@color/input_field_border_color"
+    android:paddingBottom="80dp"
+    android:clipToPadding="false">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="20dp"
-        android:background="@drawable/rounded_16dp_bg"
+        android:background="@drawable/rounded_24dp_bg"
         android:backgroundTint="@color/white"
         android:layout_marginHorizontal="16dp"
-        android:gravity="center_horizontal">
+        android:gravity="center_horizontal"
+        android:clipToPadding="false">
 
         <androidx.cardview.widget.CardView
             android:layout_width="124dp"
@@ -29,6 +32,16 @@
 
         </androidx.cardview.widget.CardView>
 
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/shimmerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp">
+
+            <include layout="@layout/shimmer_profile"/>
+
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
         <TextView
             android:id="@+id/fullNameTextView"
             android:layout_width="wrap_content"
@@ -37,6 +50,7 @@
             android:textStyle="bold"
             style="@style/TextSubtitle"
             android:textColor="@color/black"
+            android:visibility="gone"
             android:layout_marginTop="12dp"/>
 
         <TextView
@@ -45,186 +59,144 @@
             android:layout_height="wrap_content"
             android:text="Student"
             style="@style/TextBody"
+            android:textStyle="bold"
             android:layout_marginTop="4dp"
+            android:visibility="gone"
             android:textColor="@color/input_hint_color"/>
 
-        <GridLayout
+        <LinearLayout
+            android:id="@+id/contentContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:columnCount="2"
             android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:padding="@dimen/dp_1x"
+            android:visibility="gone"
             android:background="@drawable/rounded_info_container_bg"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <TextView
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
                 android:text="@string/first_name"
-                android:paddingHorizontal="10dp"
-                android:paddingVertical="16dp"
                 style="@style/TextCaption"
                 android:textColor="@color/input_hint_color" />
 
             <TextView
                 android:id="@+id/firstNameTextView"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_columnWeight="2.25"
                 android:text="First name"
+                android:textStyle="bold"
                 android:maxLines="2"
                 android:ellipsize="end"
-                style="@style/TextBody"
+                style="@style/TextCaption"
                 android:textColor="@color/black" />
 
             <View
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="0.5dp"
-                android:layout_columnWeight="1"
-                android:layout_columnSpan="2"
+                android:layout_marginVertical="@dimen/dp_1x"
                 android:background="@color/input_hint_color" />
 
             <TextView
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
                 android:text="@string/last_name"
-                android:paddingHorizontal="10dp"
-                android:paddingVertical="16dp"
                 style="@style/TextCaption"
                 android:textColor="@color/input_hint_color"/>
 
             <TextView
                 android:id="@+id/lastNameTextView"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_columnWeight="2.25"
                 android:maxLines="2"
                 android:ellipsize="end"
                 android:text="Last Name"
-                style="@style/TextBody"
+                android:textStyle="bold"
+                style="@style/TextCaption"
                 android:textColor="@color/black" />
 
             <View
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="0.5dp"
-                android:layout_columnWeight="1"
-                android:layout_columnSpan="2"
+                android:layout_marginVertical="@dimen/dp_1x"
                 android:background="@color/input_hint_color" />
 
             <TextView
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:paddingHorizontal="10dp"
-                android:paddingVertical="16dp"
                 android:text="@string/e_mail"
                 style="@style/TextCaption"
                 android:textColor="@color/input_hint_color"/>
 
             <TextView
                 android:id="@+id/emailTextView"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_columnWeight="2.25"
                 android:maxLines="2"
                 android:ellipsize="end"
-                style="@style/TextBody"
+                style="@style/TextCaption"
                 android:text="somethingdoto@gmail.com"
+                android:textStyle="bold"
                 android:textColor="@color/black" />
 
             <View
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="0.5dp"
-                android:layout_columnWeight="1"
-                android:layout_columnSpan="2"
+                android:layout_marginVertical="@dimen/dp_1x"
                 android:background="@color/input_hint_color" />
 
             <TextView
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
                 android:text="@string/group"
-                android:paddingHorizontal="10dp"
-                android:paddingVertical="16dp"
                 style="@style/TextCaption"
                 android:textColor="@color/input_hint_color" />
 
             <TextView
                 android:id="@+id/groupTextView"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_columnWeight="2.25"
                 android:text="COM-21 / Teacher"
+                android:textStyle="bold"
                 android:maxLines="2"
                 android:ellipsize="end"
-                style="@style/TextBody"
-                android:textColor="@color/black" />
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0.5dp"
-                android:layout_columnWeight="1"
-                android:layout_columnSpan="2"
-                android:background="@color/input_hint_color"/>
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:text="@string/language_level"
-                android:paddingHorizontal="10dp"
-                android:paddingVertical="16dp"
                 style="@style/TextCaption"
-                android:textColor="@color/input_hint_color"/>
-
-            <TextView
-                android:id="@+id/languageLevelTextView"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="2.25"
-                android:maxLines="2"
-                android:ellipsize="end"
-                style="@style/TextBody"
-                android:text="Upper-Intermediate"
                 android:textColor="@color/black" />
 
             <View
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="0.5dp"
-                android:layout_columnWeight="1"
-                android:layout_columnSpan="2"
+                android:layout_marginVertical="@dimen/dp_1x"
                 android:background="@color/input_hint_color"/>
 
             <TextView
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
                 android:text="@string/last_topic_passed"
-                android:paddingHorizontal="10dp"
-                android:paddingVertical="16dp"
                 style="@style/TextCaption"
                 android:textColor="@color/input_hint_color"/>
 
             <TextView
                 android:id="@+id/lastTopicPassedTextView"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_columnWeight="2.25"
                 android:maxLines="2"
                 android:ellipsize="end"
-                style="@style/TextBody"
+                style="@style/TextCaption"
                 android:text="Upper-Intermediate/Dialog/My day"
+                android:textStyle="bold"
                 android:textColor="@color/black" />
 
-        </GridLayout>
+        </LinearLayout>
 
         <Button
             android:id="@+id/editProfileButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:background="@drawable/rounded_16dp_bg"
+            android:background="@drawable/rounded_24dp_bg"
             android:backgroundTint="@color/action_color"
             android:text="@string/edit"
             android:textAllCaps="false"
@@ -236,7 +208,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:background="@drawable/rounded_16dp_bg"
+            android:background="@drawable/rounded_24dp_bg"
             android:backgroundTint="@color/input_field_border_color"
             android:text="@string/log_out"
             android:textAllCaps="false"

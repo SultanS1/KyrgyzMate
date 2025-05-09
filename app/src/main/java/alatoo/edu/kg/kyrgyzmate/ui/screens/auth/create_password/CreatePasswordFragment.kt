@@ -7,7 +7,6 @@ import alatoo.edu.kg.kyrgyzmate.extensions.navigateTo
 import alatoo.edu.kg.kyrgyzmate.extensions.pressCompressInAnimation
 import alatoo.edu.kg.kyrgyzmate.extensions.setClickListener
 import alatoo.edu.kg.kyrgyzmate.extensions.showLoadingDialog
-import alatoo.edu.kg.kyrgyzmate.extensions.showOneActionDialog
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -44,14 +43,7 @@ class CreatePasswordFragment :
                     confirmPasswordContainer.error = state.confirmPasswordField
                     confirmPasswordContainer.isErrorEnabled = state.confirmPasswordField != null
                 }
-                CreatePasswordStates.PasswordCreateFailed -> {
-                    requireContext().showOneActionDialog(
-                        getString(R.string.error_unknown_error),
-                        getString(R.string.action_ok)
-                    ) {
-                        it.dismiss()
-                    }
-                }
+                CreatePasswordStates.PasswordCreateFailed -> showErrorDialog(R.string.error_unknown_error)
 
                 CreatePasswordStates.Loading -> { requireContext().showLoadingDialog(viewLifecycleOwner.lifecycle)}
             }

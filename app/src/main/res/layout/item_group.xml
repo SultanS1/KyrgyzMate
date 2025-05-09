@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:padding="@dimen/dp_2x"
+    android:elevation="8dp"
+    android:gravity="center"
+    android:layout_marginVertical="4dp"
+    android:background="@drawable/rounded_24dp_bg"
+    android:backgroundTint="@color/action_perform_color">
+
+    <TextView
+        android:id="@+id/groupName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/TextSubtitle"
+        android:textColor="@color/white"
+        tools:text="Group"
+        android:textStyle="bold"
+        android:layout_marginHorizontal="@dimen/dp_1x"/>
+
+    <TextView
+        android:id="@+id/groupDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/TextBody"
+        android:textColor="@color/white"
+        android:maxLines="5"
+        android:ellipsize="end"
+        tools:text="Group Description"
+        android:layout_marginTop="@dimen/dp_1x"/>
+
+    <TextView
+        android:id="@+id/groupMembersAmountTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/TextSmall"
+        tools:text="20 members"
+        android:background="@drawable/rounded_24dp_bg"
+        android:backgroundTint="@color/purple"
+        android:paddingHorizontal="@dimen/dp_2x"
+        android:paddingVertical="4dp"
+        android:layout_marginTop="20dp"/>
+
+</LinearLayout>

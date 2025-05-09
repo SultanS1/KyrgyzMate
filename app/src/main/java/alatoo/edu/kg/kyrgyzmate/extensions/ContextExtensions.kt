@@ -13,12 +13,21 @@ import androidx.lifecycle.LifecycleOwner
 fun Context.showOneActionDialog(
     title: String,
     actionText: String,
+    lifecycle: Lifecycle? = null,
     action: (DialogInterface) -> Unit) {
     val builder = AlertDialog.Builder(this)
         .setTitle(title)
         .setPositiveButton(actionText) { dialog, _ ->
             action.invoke(dialog)
         }.show()
+
+    val observer = object : DefaultLifecycleObserver {
+        override fun onPause(owner: LifecycleOwner) {
+            builder.dismiss()
+            lifecycle?.removeObserver(this)
+        }
+    }
+    lifecycle?.addObserver(observer)
 
     builder.create()
     builder.window?.setLayout(

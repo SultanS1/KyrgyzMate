@@ -11,6 +11,9 @@
         <action
             android:id="@+id/action_homeFragment_to_themesFragment"
             app:destination="@id/themesFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
     </fragment>
     <fragment
         android:id="@+id/themesFragment"
@@ -80,6 +83,16 @@
         <action
             android:id="@+id/action_topicsFragment_to_wordsFragment"
             app:destination="@id/wordsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="alatoo.edu.kg.kyrgyzmate.ui.screens.student_feature.edit_profile.EditProfileFragment"
+        android:label="EditProfileFragment" >
+        <argument
+            android:name="studentProfile"
+            app:argType="alatoo.edu.kg.kyrgyzmate.data.dto.student.StudentProfile"
+            android:defaultValue="@null"
+            app:nullable="true" />
     </fragment>
 
 </navigation>

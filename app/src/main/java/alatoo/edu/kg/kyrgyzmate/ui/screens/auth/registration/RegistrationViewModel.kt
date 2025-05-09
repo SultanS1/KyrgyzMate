@@ -20,7 +20,7 @@ class RegistrationViewModel(
             is RegistrationPageAction.SubmitUserData -> {
                 when (action.role) {
                     UserRole.STUDENT -> registerStudent(
-                        action.firstName, action.lastName, action.group, action.role, action.email
+                        action.firstName, action.lastName, action.role, action.email
                     )
 
                     UserRole.LECTURER -> registerLecturer(
@@ -38,7 +38,6 @@ class RegistrationViewModel(
     private fun registerStudent(
         firstName: String,
         lastName: String,
-        group: String,
         role: UserRole,
         email: String
     ) {
@@ -57,7 +56,6 @@ class RegistrationViewModel(
                 UserRegistrationData(
                     firstName = firstName,
                     lastName = lastName,
-                    group = group,
                     role = role,
                     email = email
                 )
@@ -96,6 +94,7 @@ class RegistrationViewModel(
     }
 
     private fun checkEmailValidation() {
+        _state.value = RegistrationPageStates.Loading
        launch {
            val result = userInteractor.checkEmailVerificationStatus()
            when (result) {

@@ -99,7 +99,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dp_3x"
-        android:background="@drawable/rounded_8dp_bg"
+        android:background="@drawable/rounded_16dp_bg"
         android:backgroundTint="@color/action_color"
         android:padding="@dimen/dp_2x"
         android:text="Login"

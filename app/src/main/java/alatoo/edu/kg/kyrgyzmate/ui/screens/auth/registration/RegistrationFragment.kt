@@ -28,14 +28,12 @@ class RegistrationFragment :
         val userRole = args.role
 
         with(binding) {
-            groupSelectContainer.isVisible = userRole == UserRole.STUDENT
             signUpButton.pressCompressInAnimation()
             signUpButton.setClickListener {
                 viewModel.submitAction(
                     RegistrationPageAction.SubmitUserData(
                         firstName = firstNameEditText.text.toString(),
                         lastName = lastNameEditText.text.toString(),
-                        group = groupEditText.text.toString(),
                         role = userRole,
                         email = emailEditText.text.toString()
                     )
@@ -58,9 +56,6 @@ class RegistrationFragment :
 
                     lastNameContainer.error = state.lastNameState
                     lastNameContainer.isErrorEnabled = state.lastNameState != null
-
-                    groupContainer.error = state.groupState
-                    groupContainer.isErrorEnabled = state.groupState != null
 
                     emailContainer.error = state.emailState
                     emailContainer.isErrorEnabled = state.emailState != null
@@ -90,7 +85,8 @@ class RegistrationFragment :
     private fun showLinkSentDialog() {
         requireContext().showOneActionDialog(
             title = getString(R.string.title_deeplink_to_pass_registration),
-            actionText = getString(R.string.action_open_gmail)
+            actionText = getString(R.string.action_open_gmail),
+            lifecycle = viewLifecycleOwner.lifecycle
         ) {
             val intent = requireContext().packageManager.getLaunchIntentForPackage("com.google.android.gm")
             if (intent != null) {
@@ -98,15 +94,6 @@ class RegistrationFragment :
             } else {
                 Toast.makeText(requireContext(), "Gmail app not found", Toast.LENGTH_SHORT).show()
             }
-        }
-    }
-
-    private fun showErrorDialog(messageRes: Int) {
-        requireContext().showOneActionDialog(
-            getString(messageRes),
-            getString(R.string.action_ok))
-        {
-            it.dismiss()
         }
     }
 }

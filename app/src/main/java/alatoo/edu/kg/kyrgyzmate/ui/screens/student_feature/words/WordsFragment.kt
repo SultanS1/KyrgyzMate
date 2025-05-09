@@ -53,13 +53,7 @@ class WordsFragment
             is WordsStates.UpdatePlayedAudio -> {
                 adapter.notifyItemChanged(state.position)
             }
-            is WordsStates.Error -> {
-                requireContext().showOneActionDialog(
-                    "Error: ${state.message}", "Ok"
-                ) {
-                    it.dismiss()
-                }
-            }
+            is WordsStates.Error -> showErrorDialog(R.string.error_unknown_error)
         }
     }
 }

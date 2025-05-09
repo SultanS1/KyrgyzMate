@@ -75,6 +75,10 @@ class UserInteractor(
     }
 
     suspend fun userSession(): Boolean {
+        val user = userRestRepository.getUserProfile()
+        if (user is FirebaseGetResponse.Success) {
+            userLocalRepository.setUserProfile(user.data)
+        }
         return userRestRepository.userSessionIsActive()
     }
 

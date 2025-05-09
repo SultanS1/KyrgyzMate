@@ -7,7 +7,7 @@
     android:padding="@dimen/dp_2x"
     android:elevation="8dp"
     android:layout_marginVertical="@dimen/dp_1x"
-    android:background="@drawable/rounded_16dp_bg"
+    android:background="@drawable/rounded_24dp_bg"
     android:backgroundTint="@color/action_color">
 
     <TextView
@@ -47,7 +47,7 @@
             style="@style/TextSmall"
             tools:text="5 lessons"
             android:text="5 lessons"
-            android:background="@drawable/rounded_16dp_bg"
+            android:background="@drawable/rounded_24dp_bg"
             android:backgroundTint="@color/purple"
             android:paddingHorizontal="@dimen/dp_2x"
             android:paddingVertical="4dp"/>

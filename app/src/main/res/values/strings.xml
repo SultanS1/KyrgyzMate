@@ -38,5 +38,12 @@
     <string name="log_out">Log out</string>
     <string name="edit">Edit</string>
     <string name="last_topic_passed">Last topic passed</string>
+    <string name="you_have_created_no_groups">You have created no groups...</string>
+    <string name="enter">Enter...</string>
+    <string name="group_name">Group name</string>
+    <string name="group_description">Group description</string>
+    <string name="create">Create</string>
+    <string name="new_group">New Group</string>
+    <string name="no_members_yet">No members yet</string>
 
 </resources>
