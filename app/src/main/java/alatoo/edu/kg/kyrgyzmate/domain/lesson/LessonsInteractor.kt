@@ -1,19 +1,29 @@
 package alatoo.edu.kg.kyrgyzmate.domain.lesson
 
+import alatoo.edu.kg.kyrgyzmate.core.BaseUrls
 import alatoo.edu.kg.kyrgyzmate.data.dto.lessons.Dialog
+import alatoo.edu.kg.kyrgyzmate.data.dto.lessons.Text
 import alatoo.edu.kg.kyrgyzmate.data.dto.lessons.Word
 import alatoo.edu.kg.kyrgyzmate.data.dto.lessons.toDialog
 import alatoo.edu.kg.kyrgyzmate.data.dto.lessons.toWord
 import alatoo.edu.kg.kyrgyzmate.data.lessons.LessonsLocalRepository
 import alatoo.edu.kg.kyrgyzmate.data.lessons.LessonsRestRepository
 import alatoo.edu.kg.kyrgyzmate.services.DialogParser
+import alatoo.edu.kg.kyrgyzmate.services.DocsReader
+import alatoo.edu.kg.kyrgyzmate.services.DriveApi
 import alatoo.edu.kg.kyrgyzmate.services.models.DriveItem
 import alatoo.edu.kg.kyrgyzmate.services.models.LevelInfo
 import android.content.Context
+import android.util.Log
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.withContext
+import java.io.File
+import java.io.FileOutputStream
+import java.io.IOException
+import java.net.HttpURLConnection
+import java.net.URL
 
 class LessonsInteractor(
     private val localRepository: LessonsLocalRepository,
@@ -79,7 +89,6 @@ class LessonsInteractor(
         val topics = localRepository.getTopics(themeId)
         if(refresh || topics == null) {
             val fetchedTopics = restRepository.getItems(themeId)
-                .filter { it.isFolder }
                 .sortedBy {
                     Regex("""^\d+""").find(it.name)?.value?.toIntOrNull() ?: Int.MAX_VALUE
                 }.map { it.copy(name = it.name.replace(Regex("\\d"), "")) }
@@ -107,5 +116,57 @@ class LessonsInteractor(
             return@withContext fetchedWords
         }
         words
+    }
+
+    suspend fun getText(topicId: String, refresh: Boolean = false): Text = withContext(Dispatchers.IO) {
+        val text = localRepository.getText(topicId)
+        if (refresh || text == null) {
+            val files = DriveApi.listChildren(topicId)
+
+            val textFile = files.find {
+                it.name.endsWith(".txt", ignoreCase = true) || it.name.equals("text", ignoreCase = true)
+            } ?: throw IllegalArgumentException("Text file not found in folder: $topicId")
+
+            val audioFile = files.find {
+                it.name.endsWith(".mp3", ignoreCase = true)
+            } ?: throw IllegalArgumentException("Audio file not found in folder: $topicId")
+
+            val text = DocsReader.readTextFile(textFile.id)
+
+            val audio = cacheAudioFromDrive(context, audioFile.id)
+
+            val fetchedText = Text(text = text, audio = audio)
+            localRepository.setText(topicId, fetchedText)
+            Log.d("LessonsInteractor", "Fetched text: $fetchedText")
+            return@withContext fetchedText
+        }
+        text
+    }
+
+    private suspend fun cacheAudioFromDrive(context: Context, fileId: String): File = withContext(Dispatchers.IO) {
+        val cacheFile = File(context.cacheDir, "$fileId.mp3")
+
+        if (cacheFile.exists() && cacheFile.length() > 0) return@withContext cacheFile
+
+        val url = "https://www.googleapis.com/drive/v3/files/$fileId?alt=media&key=${BaseUrls.API_KEY}"
+
+        try {
+            val connection = URL(url).openConnection() as HttpURLConnection
+            connection.connect()
+
+            connection.inputStream.use { input ->
+                FileOutputStream(cacheFile).use { output ->
+                    input.copyTo(output)
+                }
+            }
+            if (cacheFile.length() == 0L) {
+                cacheFile.delete()
+                throw IOException("Downloaded file is empty: $fileId")
+            }
+        } catch (e: Exception) {
+            throw IOException("Failed to download audio file: $fileId", e)
+        }
+
+        return@withContext cacheFile
     }
 }

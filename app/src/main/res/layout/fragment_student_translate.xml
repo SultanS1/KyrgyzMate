@@ -23,12 +23,12 @@
             android:gravity="top|start"
             android:textAlignment="viewStart"
             android:hint="Enter text"
-            android:maxLines="20"
+            android:maxLines="200"
             android:scrollHorizontally="false"
             android:textColorHint="@color/input_hint_color"
             android:inputType="textMultiLine|textNoSuggestions"
             android:imeOptions="actionDone"
-            android:textSize="16sp"
+            android:textSize="14sp"
             android:background="@color/transparent"
             android:textColor="@color/black"/>
 
@@ -70,10 +70,11 @@
             android:textSize="14sp" />
         
         <ImageView
+            android:id="@+id/swapLanguageButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_swap"
-            android:layout_marginHorizontal="20dp"/>
+            android:padding="20dp"/>
 
         <Button
             android:id="@+id/languageToButton"
@@ -83,21 +84,22 @@
             android:background="@drawable/rounded_16dp_bg"
             android:backgroundTint="@color/action_color"
             android:padding="@dimen/dp_1x"
-            android:text="Kyrgyz"
+            android:text="Russian"
             android:textColor="@color/white"
             android:textSize="14sp" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/openCameraButton"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             app:cardCornerRadius="25dp"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="10dp"
+            android:padding="10dp"
             app:cardBackgroundColor="@color/action_color">
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:orientation="vertical"
                 android:gravity="center">
                 <ImageView

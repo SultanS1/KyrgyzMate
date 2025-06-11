@@ -1,6 +1,7 @@
 package alatoo.edu.kg.kyrgyzmate.data.lessons
 
 import alatoo.edu.kg.kyrgyzmate.data.dto.lessons.Dialog
+import alatoo.edu.kg.kyrgyzmate.data.dto.lessons.Text
 import alatoo.edu.kg.kyrgyzmate.data.dto.lessons.Word
 import alatoo.edu.kg.kyrgyzmate.services.models.DriveItem
 import alatoo.edu.kg.kyrgyzmate.services.models.LevelInfo
@@ -17,6 +18,8 @@ class LessonsCacheRepository : LessonsLocalRepository {
     private val dialogsFlow: MutableStateFlow<MutableMap<String, List<Dialog>?>> = MutableStateFlow(mutableMapOf())
 
     private val wordsFlow: MutableStateFlow<MutableMap<String, List<Word>?>> = MutableStateFlow(mutableMapOf())
+
+    private val textsFlow: MutableStateFlow<MutableMap<String, Text?>> = MutableStateFlow(mutableMapOf())
 
     override fun setLevels(levels: List<LevelInfo>) {
         levelsFlow.value = levels
@@ -64,5 +67,15 @@ class LessonsCacheRepository : LessonsLocalRepository {
 
     override fun getWords(topicId: String): List<Word>? {
         return wordsFlow.value[topicId]
+    }
+
+    override fun setText(topicId: String, text: Text) {
+        val currentTexts = textsFlow.value.toMutableMap()
+        currentTexts[topicId] = text
+        textsFlow.value = currentTexts
+    }
+
+    override fun getText(topicId: String): Text? {
+        return textsFlow.value[topicId]
     }
 }

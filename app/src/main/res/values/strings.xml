@@ -45,5 +45,6 @@
     <string name="create">Create</string>
     <string name="new_group">New Group</string>
     <string name="no_members_yet">No members yet</string>
+    <string name="capture">Capture</string>
 
 </resources>

@@ -12,7 +12,7 @@ data class StudentGroupInfo(
     val fullName: String = "",
     val progress: String = "0%",
     val lastTopic: String = "Beginner",
-    val lastSeen: ZonedDateTime? = null,
+    val lastSeenAt: String? = null,
     val email: String = "",
     val passedItems: List<String> = listOf()
 ) : Parcelable, DelegateAdapterItem {

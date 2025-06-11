@@ -7,5 +7,7 @@ sealed interface TopicsActions : BaseAction {
 
     data class LoadThemes(val themeId: String) : TopicsActions
 
-    data class OpenTopic(val topicId: String) : TopicsActions
+    data class OpenTopic(val topicId: String, val topicName: String) : TopicsActions
+
+    data object UpdateProgress: TopicsActions
 }

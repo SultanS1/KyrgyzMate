@@ -61,7 +61,7 @@ object AudioPlayer {
         }
     }
 
-    private fun stopAudio() {
+    fun stopAudio() {
         mediaPlayer?.apply {
             if (isPlaying) {
                 stop()
