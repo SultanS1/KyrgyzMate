@@ -133,18 +133,6 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/editProfileButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/rounded_24dp_bg"
-            android:backgroundTint="@color/action_color"
-            android:text="@string/edit"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            style="@style/TextBody"/>
-
-        <Button
             android:id="@+id/logoutButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

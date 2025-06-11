@@ -20,4 +20,10 @@ interface StudentRestRepository {
         surname: String,
         group: GroupItem?
     ) : FireBasePostResponse
+
+    suspend fun updateStudentProgress(
+        totalItemAmount: Int,
+        itemsId: List<String>,
+        lastPassedItem: String
+    ): FireBasePostResponse
 }

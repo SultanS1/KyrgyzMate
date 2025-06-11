@@ -6,6 +6,8 @@ import alatoo.edu.kg.kyrgyzmate.core.adapter.MainCompositeAdapter
 import alatoo.edu.kg.kyrgyzmate.databinding.FragmentStudentDialogBinding
 import alatoo.edu.kg.kyrgyzmate.extensions.setClickListener
 import alatoo.edu.kg.kyrgyzmate.extensions.showOneActionDialog
+import alatoo.edu.kg.kyrgyzmate.services.AudioPlayer
+import android.os.Bundle
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -35,7 +37,13 @@ class DialogFragment
         with(binding) {
             viewModel.submitAction(DialogActions.LoadData(id))
             recyclerView.adapter = adapter
-            arrowBackButton.setClickListener { findNavController().navigateUp() }
+            arrowBackButton.setClickListener {
+                val bundle = Bundle().apply {
+                putString("topic_id", "")
+            }
+                parentFragmentManager.setFragmentResult("my_result_key", bundle)
+
+                findNavController().popBackStack() }
         }
     }
 
@@ -55,5 +63,10 @@ class DialogFragment
             }
             is DialogStates.Error -> showErrorDialog(R.string.error_unknown_error)
         }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        AudioPlayer.stopAudio()
     }
 }

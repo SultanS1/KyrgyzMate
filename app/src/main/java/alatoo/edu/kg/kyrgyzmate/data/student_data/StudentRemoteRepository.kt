@@ -5,10 +5,12 @@ import alatoo.edu.kg.kyrgyzmate.data.dto.status.FireBasePostResponse
 import alatoo.edu.kg.kyrgyzmate.data.dto.status.FirebaseGetResponse
 import alatoo.edu.kg.kyrgyzmate.data.dto.student.StudentGroupInfo
 import alatoo.edu.kg.kyrgyzmate.data.dto.student.StudentProfile
+import alatoo.edu.kg.kyrgyzmate.utils.Utils
 import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import kotlinx.coroutines.tasks.await
+import java.time.LocalDateTime
 
 class StudentRemoteRepository(
     private val firebaseAuth: FirebaseAuth,
@@ -70,15 +72,43 @@ class StudentRemoteRepository(
         )
 
         val groupInfoUpdates = mutableMapOf<String, Any?>(
-            "groupId" to group?.groupId,
             "groupInfo" to "${group?.groupName} / ${group?.creatorFullName}",
             "fullName" to "$name $surname"
         )
+
+        if(group != null) groupInfoUpdates["groupId"] = group.groupId
 
         return try {
             val userRef = firebaseDb.child("users/$uid")
             val groupInfoRef = firebaseDb.child("student_info/$uid")
             userRef.updateChildren(profileUpdates).await()
+            groupInfoRef.updateChildren(groupInfoUpdates).await()
+
+            FireBasePostResponse.SUCCESS
+        } catch (t: Throwable) {
+            Log.e("StudentRemoteRepository", t.message.toString())
+            FireBasePostResponse.UNKNOWN_ERROR
+        }
+    }
+
+    override suspend fun updateStudentProgress(
+        totalItemAmount: Int,
+        itemsId: List<String>,
+        lastPassedItem: String
+    ): FireBasePostResponse {
+
+        val uid = firebaseAuth.currentUser?.uid
+            ?: return FireBasePostResponse.PERMISSION_DENIED
+
+        val groupInfoUpdates = mutableMapOf<String, Any?>(
+            "lastTopic" to lastPassedItem,
+            "passedItems" to itemsId,
+            "progress" to "5%",
+            "lastSeenAt" to LocalDateTime.now().toString()
+        )
+
+        return try {
+            val groupInfoRef = firebaseDb.child("student_info/$uid")
             groupInfoRef.updateChildren(groupInfoUpdates).await()
 
             FireBasePostResponse.SUCCESS

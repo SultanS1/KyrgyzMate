@@ -23,7 +23,7 @@ class TopicsFragment
     private val adapter by lazy {
         MainCompositeAdapter.Builder()
             .add(TopicsAdapter {
-                viewModel.submitAction(TopicsActions.OpenTopic(it.id))
+                viewModel.submitAction(TopicsActions.OpenTopic(it.id, it.name))
             } )
             .build()
     }
@@ -35,6 +35,12 @@ class TopicsFragment
         val themeType = args.themeType
         theme = themeType?.name ?: ""
 
+        parentFragmentManager.setFragmentResultListener("my_result_key", viewLifecycleOwner) { _, bundle ->
+            val result = bundle.getString("topic_id")
+            if (result != null) {
+                viewModel.submitAction(TopicsActions.UpdateProgress)
+            }
+        }
         with(binding) {
             titleTextView.text = theme
             viewModel.submitAction(TopicsActions.LoadThemes(themeType?.id ?: ""))

@@ -1,6 +1,7 @@
 package alatoo.edu.kg.kyrgyzmate.data.lessons
 
 import alatoo.edu.kg.kyrgyzmate.data.dto.lessons.Dialog
+import alatoo.edu.kg.kyrgyzmate.data.dto.lessons.Text
 import alatoo.edu.kg.kyrgyzmate.data.dto.lessons.Word
 import alatoo.edu.kg.kyrgyzmate.services.models.DriveItem
 import alatoo.edu.kg.kyrgyzmate.services.models.LevelInfo
@@ -27,4 +28,7 @@ interface LessonsLocalRepository {
 
     fun getWords(topicId: String): List<Word>?
 
+    fun setText(topicId: String, text: Text)
+
+    fun getText(topicId: String): Text?
 }

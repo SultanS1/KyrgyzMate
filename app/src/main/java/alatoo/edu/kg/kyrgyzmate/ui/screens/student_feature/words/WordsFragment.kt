@@ -6,6 +6,7 @@ import alatoo.edu.kg.kyrgyzmate.core.adapter.MainCompositeAdapter
 import alatoo.edu.kg.kyrgyzmate.databinding.FragmentStudentWordsBinding
 import alatoo.edu.kg.kyrgyzmate.extensions.setClickListener
 import alatoo.edu.kg.kyrgyzmate.extensions.showOneActionDialog
+import android.os.Bundle
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -34,7 +35,13 @@ class WordsFragment
         val id = args.id ?: ""
         with(binding) {
             viewModel.submitAction(WordsActions.LoadWords(id))
-            arrowBackButton.setClickListener { findNavController().navigateUp() }
+            binding.arrowBackButton.setClickListener {
+                val bundle = Bundle().apply {
+                    putString("topic_id", "")
+                }
+                parentFragmentManager.setFragmentResult("my_result_key", bundle)
+
+                findNavController().popBackStack() }
             recyclerView.adapter = adapter
         }
     }

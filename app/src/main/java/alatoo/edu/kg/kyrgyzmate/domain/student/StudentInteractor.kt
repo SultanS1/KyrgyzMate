@@ -38,4 +38,26 @@ class StudentInteractor(
     ): FireBasePostResponse {
         return studentRestRepository.updateProfile(name, surname, groupItem)
     }
+
+    fun setStudentLevel(level: String) {
+        studentLocalRepository.setStudentLevel(level)
+    }
+
+    fun setStudentTheme(theme: String) {
+        studentLocalRepository.setStudentTheme(theme)
+    }
+
+    fun setStudentTopic(topic: String) {
+        studentLocalRepository.setStudentTopic(topic)
+    }
+
+    private fun getLastPassedItem(): String {
+        return "${studentLocalRepository.getStudentLevel()}/${studentLocalRepository.getStudentTheme()}/${studentLocalRepository.getStudentTopic()}"
+    }
+    suspend fun updateUserProgress(
+        totalItemAmount: Int,
+        itemsId: List<String>
+    ): FireBasePostResponse {
+        return studentRestRepository.updateStudentProgress(totalItemAmount, itemsId, getLastPassedItem())
+    }
 }

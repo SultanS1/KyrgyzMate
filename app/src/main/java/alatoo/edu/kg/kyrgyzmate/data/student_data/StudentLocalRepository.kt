@@ -8,4 +8,15 @@ interface StudentLocalRepository {
 
     fun getStudentProfile(): StudentProfile?
 
+    fun setStudentLevel(level: String)
+
+    fun getStudentLevel(): String?
+
+    fun setStudentTheme(theme: String)
+
+    fun getStudentTheme(): String?
+
+    fun setStudentTopic(topic: String)
+
+    fun getStudentTopic(): String?
 }

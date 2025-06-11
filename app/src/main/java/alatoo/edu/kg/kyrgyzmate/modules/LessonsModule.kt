@@ -6,6 +6,7 @@ import alatoo.edu.kg.kyrgyzmate.data.lessons.LessonsRemoteRepository
 import alatoo.edu.kg.kyrgyzmate.data.lessons.LessonsRestRepository
 import alatoo.edu.kg.kyrgyzmate.domain.lesson.LessonsInteractor
 import alatoo.edu.kg.kyrgyzmate.ui.screens.student_feature.dialog.DialogViewModel
+import alatoo.edu.kg.kyrgyzmate.ui.screens.student_feature.texts.TextsViewModel
 import alatoo.edu.kg.kyrgyzmate.ui.screens.student_feature.themes.ThemesViewModel
 import alatoo.edu.kg.kyrgyzmate.ui.screens.student_feature.topics.TopicsViewModel
 import alatoo.edu.kg.kyrgyzmate.ui.screens.student_feature.words.WordsViewModel
@@ -22,4 +23,5 @@ val lessonsModule = module {
     viewModelOf(::TopicsViewModel)
     viewModelOf(::DialogViewModel)
     viewModelOf(::WordsViewModel)
+    viewModelOf(::TextsViewModel)
 }
